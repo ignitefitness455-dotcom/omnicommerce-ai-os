@@ -26,6 +26,7 @@ pub fn api_v1_router(state: Arc<AppState>) -> Router {
         .nest("/webhooks", crate::webhooks::webhooks_router(state.clone()))
         .nest("/innovations", crate::innovations::innovations_router(state.clone()))
         .nest("/growth", crate::phase4_growth::phase4_growth_router(state.clone()))
+        .nest("/merchants", crate::merchant_portal::merchant_portal_router(state.clone()))
         .with_state(state)
 }
 

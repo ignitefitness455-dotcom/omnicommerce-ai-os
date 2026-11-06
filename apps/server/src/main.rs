@@ -1,9 +1,12 @@
 mod innovations;
+mod merchant_portal;
 mod phase4_growth;
 mod routes;
 mod webhooks;
 
 use axum::{routing::get, Json, Router};
+use merchant_portal::CatalogProductItem;
+use omni_core::CurrencyCode;
 use serde_json::{json, Value};
 use std::{
     collections::HashMap,
@@ -13,6 +16,7 @@ use std::{
 };
 use tower_http::cors::CorsLayer;
 use tower_http::trace::TraceLayer;
+use uuid::Uuid;
 use webhooks::WebhookOrchestrationResult;
 
 pub struct AppState {
@@ -22,6 +26,7 @@ pub struct AppState {
     pub salla_webhook_secret: String,
     pub meta_verify_token: String,
     pub idempotency_cache: Mutex<HashMap<String, WebhookOrchestrationResult>>,
+    pub catalog_products: Mutex<Vec<CatalogProductItem>>,
 }
 
 #[tokio::main]
@@ -46,6 +51,34 @@ async fn main() {
         meta_verify_token: env::var("META_WHATSAPP_VERIFY_TOKEN")
             .unwrap_or_else(|_| "omni_whatsapp_verify_token".to_string()),
         idempotency_cache: Mutex::new(HashMap::new()),
+        catalog_products: Mutex::new(vec![
+            CatalogProductItem {
+                id: Uuid::new_v4(),
+                sku: "OMNI-GCC-ABAYA-902".to_string(),
+                title_en: "Oud Royal Velvet Abaya — Limited Edition".to_string(),
+                title_ar: Some("عباية مخمل ملكي فاخرة".to_string()),
+                unit_price_major: 420.0,
+                unit_cogs_major: 240.0,
+                currency: CurrencyCode::AED,
+                stock_quantity: 18,
+                min_required_margin_pct: 28.0,
+                max_ai_discount_pct: 12.0,
+                vector_indexed: true,
+            },
+            CatalogProductItem {
+                id: Uuid::new_v4(),
+                sku: "OMNI-KSA-OUD-501".to_string(),
+                title_en: "Royal Cambodian Oud Elixir 100ml".to_string(),
+                title_ar: Some("دهن عود كمبودي ملكي".to_string()),
+                unit_price_major: 540.0,
+                unit_cogs_major: 290.0,
+                currency: CurrencyCode::SAR,
+                stock_quantity: 32,
+                min_required_margin_pct: 30.0,
+                max_ai_discount_pct: 10.0,
+                vector_indexed: true,
+            },
+        ]),
     });
 
     let app = Router::new()

@@ -1,0 +1,20 @@
+{
+  "app_name": "OmniCommerce AI OS — GCC COD Fraud Shield & WhatsApp Flows",
+  "app_code": "omnicommerce_ai_gcc",
+  "version": "1.0.0",
+  "supported_regions": ["SA", "AE", "QA", "KW", "BH", "OM"],
+  "oauth_scopes": [
+    "orders.read",
+    "orders.write",
+    "products.read",
+    "shipments.write",
+    "webhooks.read_write"
+  ],
+  "webhooks": [
+    {
+      "event": "order.created",
+      "target_url": "https://api.omnicommerce.ai/api/v1/webhooks/salla/order-created",
+      "signature_header": "X-Salla-Signature"
+    }
+  ]
+}

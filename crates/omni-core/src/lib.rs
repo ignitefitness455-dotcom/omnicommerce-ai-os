@@ -2,12 +2,17 @@
 //! E.164 international phone normalization, ISO 4217 multi-currency types,
 //! constant-time webhook HMAC verifiers, and RFC 9457 errors.
 
+pub mod auth;
 pub mod billing;
 pub mod crypto;
 pub mod currency;
 pub mod error;
 pub mod hmac_verify;
 
+pub use auth::{
+    generate_merchant_api_key, issue_merchant_session_token, GeneratedApiKeyBundle,
+    MerchantSessionClaims,
+};
 pub use billing::{
     calculate_merchant_saas_roi, MerchantRoiInput, MerchantRoiReport, SaasPlanTier,
 };

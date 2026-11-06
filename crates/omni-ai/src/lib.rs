@@ -1,6 +1,7 @@
 //! `omni-ai`: Multimodal GPT-4o Vision + Whisper Voice + Multilingual Conversational
 //! Sales Agent & Meta WhatsApp Flows COD Verification Engine.
 
+pub mod live_providers;
 pub mod negotiation_engine;
 pub mod retargeting;
 pub mod whatsapp_flows;
@@ -8,6 +9,9 @@ pub mod whatsapp_flows;
 use omni_core::CurrencyCode;
 use serde::{Deserialize, Serialize};
 
+pub use live_providers::{
+    analyze_inquiry_with_openai_or_fallback, dispatch_meta_whatsapp_cloud_flow,
+};
 pub use negotiation_engine::{
     evaluate_autonomous_negotiation, NegotiationDecision, NegotiationInput, NegotiationStrategy,
 };
