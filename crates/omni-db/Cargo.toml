@@ -1,0 +1,13 @@
+[package]
+name = "omni-db"
+version.workspace = true
+edition.workspace = true
+
+[dependencies]
+omni-core = { path = "../omni-core" }
+diesel.workspace = true
+bigdecimal.workspace = true
+serde.workspace = true
+serde_json.workspace = true
+uuid.workspace = true
+chrono.workspace = true

@@ -1,0 +1,22 @@
+[package]
+name = "omni-server"
+version.workspace = true
+edition.workspace = true
+
+[dependencies]
+omni-core = { path = "../../crates/omni-core" }
+omni-fraud-engine = { path = "../../crates/omni-fraud-engine" }
+omni-logistics = { path = "../../crates/omni-logistics" }
+omni-ai = { path = "../../crates/omni-ai" }
+omni-db = { path = "../../crates/omni-db" }
+tokio.workspace = true
+axum.workspace = true
+tower.workspace = true
+tower-http.workspace = true
+serde.workspace = true
+serde_json.workspace = true
+uuid.workspace = true
+chrono.workspace = true
+tracing.workspace = true
+tracing-subscriber.workspace = true
+dotenvy.workspace = true

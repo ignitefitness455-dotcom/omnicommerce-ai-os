@@ -1,0 +1,9 @@
+[build]
+  base = "apps/web"
+  publish = "public"
+  command = "echo 'Deploying OmniCommerce AI OS Interactive Command Center'"
+
+[[redirects]]
+  from = "/"
+  to = "/command-center-preview.html"
+  status = 200
