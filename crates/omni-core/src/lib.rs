@@ -8,6 +8,7 @@ pub mod crypto;
 pub mod currency;
 pub mod error;
 pub mod hmac_verify;
+pub mod rbac;
 
 pub use auth::{
     generate_merchant_api_key, issue_merchant_session_token, GeneratedApiKeyBundle,
@@ -22,3 +23,4 @@ pub use error::{DomainError, ProblemDetails};
 pub use hmac_verify::{
     verify_hex_hmac_sha256, verify_meta_hub_signature, verify_shopify_hmac_base64,
 };
+pub use rbac::{role_has_permission, MerchantRole, Permission, SsoAuthSession, TeamMemberRecord};

@@ -1,6 +1,7 @@
 mod innovations;
 mod merchant_portal;
 mod phase4_growth;
+mod realtime_sse;
 mod routes;
 mod webhooks;
 

@@ -1,0 +1,22 @@
+{
+  "name": "OmniCommerce AI OS — Global Merchant Command Center",
+  "short_name": "OmniCommerce AI",
+  "description": "Zero-Knowledge COD Fraud Shield, Margin-Protected AI Deal Closer & Multi-Carrier Auto-Logistics for GCC, SEA & Global D2C Brands.",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#020617",
+  "theme_color": "#10b981",
+  "orientation": "portrait-primary",
+  "icons": [
+    {
+      "src": "/icon-192.png",
+      "sizes": "192x192",
+      "type": "image/png"
+    },
+    {
+      "src": "/icon-512.png",
+      "sizes": "512x512",
+      "type": "image/png"
+    }
+  ]
+}

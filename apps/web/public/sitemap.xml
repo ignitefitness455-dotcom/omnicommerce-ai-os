@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+  <url>
+    <loc>https://omnicommerce.ai/landing</loc>
+    <priority>1.0</priority>
+  </url>
+  <url>
+    <loc>https://omnicommerce.ai/</loc>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://omnicommerce.ai/orders</loc>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://omnicommerce.ai/catalog</loc>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://omnicommerce.ai/analytics</loc>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://omnicommerce.ai/auth</loc>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://omnicommerce.ai/legal</loc>
+    <priority>0.6</priority>
+  </url>
+</urlset>

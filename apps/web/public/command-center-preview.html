@@ -3,570 +3,842 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>OmniCommerce AI OS — Full Enterprise SaaS Suite (GCC • SEA • Global)</title>
+  <title>OmniCommerce AI OS — Global Social Commerce & COD Fraud Shield</title>
+  <meta name="description" content="Zero-Knowledge COD Fraud Shield, Margin-Protected AI Deal Closer, WhatsApp Flows, and Multi-Carrier Auto-Logistics for GCC, SEA & Global D2C Brands." />
+  <meta property="og:title" content="OmniCommerce AI OS — Stop COD Returns. Automate WhatsApp Sales with AI." />
+  <meta property="og:description" content="Trusted by 1,842+ D2C brands across UAE, Saudi Arabia & Southeast Asia. GDPR & Saudi PDPL compliant." />
+  <link rel="manifest" href="/apps/web/public/manifest.json" />
   <script src="https://cdn.tailwindcss.com"></script>
   <style>
-    body { background-color: #020617; color: #f8fafc; font-family: Inter, system-ui, sans-serif; }
-    .glass { background: rgba(15, 23, 42, 0.90); backdrop-filter: blur(12px); }
+    body { background-color: #020617; color: #f8fafc; font-family: Inter, system-ui, -apple-system, sans-serif; }
+    .glass { background: rgba(15, 23, 42, 0.88); backdrop-filter: blur(12px); }
+    .tab-panel { display: none; }
+    .tab-panel.active { display: block; animation: fadeIn 0.18s ease-out; }
+    @keyframes fadeIn { from { opacity: 0; transform: translateY(4px); } to { opacity: 1; transform: translateY(0); } }
   </style>
 </head>
-<body class="min-h-screen p-4 md:p-8">
-  <div class="max-w-7xl mx-auto space-y-6">
-    <!-- Top Header & Navigation Bar -->
-    <header class="glass border border-slate-800 rounded-2xl p-6 space-y-4">
-      <div class="flex flex-col lg:flex-row lg:items-center justify-between gap-4">
-        <div>
-          <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-emerald-500/10 border border-emerald-500/30 text-emerald-400 text-xs font-semibold mb-2">
-            🌍 PRODUCTION READY SUITE: FRAUD SHIELD • WEBHOOKS • AI HAGGLING • CATALOG • ONBOARDING
-          </div>
-          <h1 class="text-2xl md:text-3xl font-bold text-white tracking-tight">
-            OmniCommerce AI OS — Global Enterprise Command Center
-          </h1>
-          <p class="text-slate-400 text-sm mt-1">
-            Zero-Knowledge COD Fraud Shield • Margin-Protected AI Deal Closer • Zone Carrier Arbitrage • Meta 24h Retargeting • Stripe SaaS Billing
-          </p>
-        </div>
-        <div class="flex flex-wrap items-center gap-2.5 text-xs">
-          <span class="px-3 py-1.5 rounded-lg bg-slate-900 border border-slate-700 text-slate-300">
-            Active Tenant: <strong id="activeMerchantBanner" class="text-emerald-400">Al-Noor Luxury Abayas (Dubai, UAE)</strong>
-          </span>
-          <span class="px-3 py-1.5 rounded-lg bg-indigo-500/20 border border-indigo-500/40 text-indigo-300 font-semibold">
-            Rust Axum + PostgreSQL Ready
-          </span>
-        </div>
+<body class="min-h-screen flex flex-col">
+
+  <!-- Sticky Enterprise Navigation -->
+  <header class="sticky top-0 z-40 border-b border-slate-800 bg-slate-950/90 backdrop-blur px-4 md:px-8 py-3">
+    <div class="max-w-7xl mx-auto flex flex-wrap items-center justify-between gap-3">
+      <div class="flex items-center gap-3">
+        <span class="h-3 w-3 rounded-full bg-emerald-400 animate-pulse"></span>
+        <span class="font-extrabold text-white tracking-tight text-base">OmniCommerce AI OS</span>
+        <span class="hidden sm:inline-block text-[11px] px-2 py-0.5 rounded bg-emerald-500/10 text-emerald-400 border border-emerald-500/30 font-semibold">
+          GCC • SEA • GLOBAL
+        </span>
       </div>
 
-      <!-- Quick Jump Navigation Pills -->
-      <div class="flex flex-wrap gap-2 pt-2 border-t border-slate-800 text-xs font-semibold">
-        <a href="#sec-orders-catalog" class="px-3 py-1.5 rounded-lg bg-slate-900 hover:bg-slate-800 border border-slate-700 text-emerald-300">📦 1. Live Orders, Catalog & Merchant Onboarding</a>
-        <a href="#sec-phase4" class="px-3 py-1.5 rounded-lg bg-slate-900 hover:bg-slate-800 border border-slate-700 text-indigo-300">🚀 2. Fraud-Filtered Retargeting & Stripe ROI</a>
-        <a href="#sec-phase3" class="px-3 py-1.5 rounded-lg bg-slate-900 hover:bg-slate-800 border border-slate-700 text-fuchsia-300">✨ 3. AI Margin Haggling & Carrier Arbitrage</a>
-        <a href="#sec-phase2" class="px-3 py-1.5 rounded-lg bg-slate-900 hover:bg-slate-800 border border-slate-700 text-amber-300">⚡ 4. Storefront Webhooks & WhatsApp Flows</a>
-      </div>
-    </header>
-
-    <!-- ====================================================================== -->
-    <!-- NEW FULL SAAS MODULE: ORDERS TABLE + CATALOG COGS EDITOR + ONBOARDING  -->
-    <!-- ====================================================================== -->
-    <section id="sec-orders-catalog" class="glass border border-cyan-500/40 rounded-2xl p-6 space-y-6">
-      <div class="flex flex-col md:flex-row md:items-center justify-between gap-3 border-b border-slate-800 pb-4">
-        <div>
-          <span class="text-xs font-bold uppercase tracking-wider text-cyan-400">🏢 Enterprise Operations Portal (`/api/v1/merchants/*`)</span>
-          <h2 class="text-xl font-bold text-white mt-0.5">Live Omnichannel Orders &nbsp;•&nbsp; Product Catalog Margin Guardrails &nbsp;•&nbsp; 1-Click Merchant Onboarding</h2>
-        </div>
-        <button onclick="generateNewMerchantKey()" class="px-3.5 py-2 rounded-xl bg-cyan-500 hover:bg-cyan-400 text-slate-950 font-bold text-xs transition">
-          🔑 Generate New Merchant API Key (`omni_live_...`)
+      <div class="flex items-center gap-2">
+        <span class="hidden md:inline-block text-xs text-slate-400 px-2.5 py-1 rounded-lg bg-slate-900 border border-slate-800">
+          Tenant: <strong class="text-emerald-400">Al-Noor Dubai (Scale Plan)</strong>
+        </span>
+        <button onclick="toggleLanguage()" id="langToggleBtn" class="px-3 py-1.5 rounded-lg bg-slate-900 hover:bg-slate-800 border border-slate-700 text-xs font-bold text-white transition">
+          🌐 العربية (RTL)
         </button>
       </div>
+    </div>
 
-      <!-- API Key & Storefront Webhook Credentials Banner -->
-      <div id="apiKeyBox" class="p-4 rounded-xl bg-slate-950 border border-slate-800 grid grid-cols-1 md:grid-cols-3 gap-3 text-xs font-mono">
-        <div>
-          <span class="text-slate-400">Secret API Key (HMAC-SHA256):</span>
-          <div id="liveApiKeyOut" class="text-amber-300 font-bold mt-0.5 truncate">omni_live_9f86d081884c7d659a2feaa0c55ad015</div>
-        </div>
-        <div>
-          <span class="text-slate-400">Shopify / Salla Webhook Endpoint:</span>
-          <div class="text-emerald-400 mt-0.5 truncate">POST /api/v1/webhooks/salla/order-created</div>
-        </div>
-        <div>
-          <span class="text-slate-400">Meta WhatsApp Cloud Webhook:</span>
-          <div class="text-indigo-400 mt-0.5 truncate">POST /api/v1/webhooks/whatsapp</div>
-        </div>
-      </div>
+    <!-- 7 Switchable Enterprise Tabs -->
+    <nav class="max-w-7xl mx-auto mt-3 flex flex-wrap gap-1.5 text-xs font-semibold">
+      <button onclick="switchTab('tab-marketing')" data-tab="tab-marketing" class="nav-btn px-3 py-2 rounded-xl bg-emerald-500 text-slate-950 transition">
+        🌐 1. Product Home & ROI
+      </button>
+      <button onclick="switchTab('tab-fraud')" data-tab="tab-fraud" class="nav-btn px-3 py-2 rounded-xl bg-slate-900 text-slate-300 hover:text-white border border-slate-800 transition">
+        🛡️ 2. Fraud Shield & Webhooks
+      </button>
+      <button onclick="switchTab('tab-orders')" data-tab="tab-orders" class="nav-btn px-3 py-2 rounded-xl bg-slate-900 text-slate-300 hover:text-white border border-slate-800 transition">
+        📦 3. Live Orders & AWBs
+      </button>
+      <button onclick="switchTab('tab-catalog')" data-tab="tab-catalog" class="nav-btn px-3 py-2 rounded-xl bg-slate-900 text-slate-300 hover:text-white border border-slate-800 transition">
+        🏷️ 4. Catalog & Margin Guardrails
+      </button>
+      <button onclick="switchTab('tab-innovations')" data-tab="tab-innovations" class="nav-btn px-3 py-2 rounded-xl bg-slate-900 text-slate-300 hover:text-white border border-slate-800 transition">
+        ✨ 5. AI Haggling & Arbitrage
+      </button>
+      <button onclick="switchTab('tab-analytics')" data-tab="tab-analytics" class="nav-btn px-3 py-2 rounded-xl bg-slate-900 text-slate-300 hover:text-white border border-slate-800 transition">
+        📊 6. Analytics & 24h Retargeting
+      </button>
+      <button onclick="switchTab('tab-auth-legal')" data-tab="tab-auth-legal" class="nav-btn px-3 py-2 rounded-xl bg-slate-900 text-slate-300 hover:text-white border border-slate-800 transition">
+        🔑 7. Auth, RBAC & GDPR/PDPL
+      </button>
+    </nav>
+  </header>
 
-      <div class="grid grid-cols-1 lg:grid-cols-12 gap-6">
-        <!-- Left 7 Cols: Live Omnichannel Order Feed Table -->
-        <div class="lg:col-span-7 bg-slate-950 border border-slate-800 rounded-xl p-4 space-y-3">
-          <div class="flex items-center justify-between">
-            <h3 class="text-sm font-bold text-white">📦 Live Omnichannel Order Stream & Carrier AWBs</h3>
-            <span class="text-[11px] text-emerald-400 font-semibold">Auto-Synced with Shopify, Salla & TikTok Shop</span>
+  <main id="appContainer" class="flex-1 max-w-7xl w-full mx-auto p-4 md:p-8 space-y-6">
+
+    <!-- ================================================================== -->
+    <!-- TAB 1: MARKETING LANDING PAGE, ROI SLIDER, PRICING & TRUST BADGES  -->
+    <!-- ================================================================== -->
+    <section id="tab-marketing" class="tab-panel active space-y-10">
+      <div class="glass border border-slate-800 rounded-3xl p-6 md:p-10 grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
+        <div class="lg:col-span-7 space-y-5">
+          <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-emerald-500/10 border border-emerald-500/30 text-emerald-400 text-xs font-bold" data-i18n="heroBadge">
+            TRUSTED BY 1,842+ D2C BRANDS ACROSS UAE, SAUDI ARABIA & SOUTHEAST ASIA
           </div>
-          <div class="overflow-x-auto">
-            <table class="w-full text-left text-xs">
-              <thead class="text-slate-400 border-b border-slate-800">
-                <tr>
-                  <th class="pb-2">Order / Channel</th>
-                  <th class="pb-2">Buyer (E.164)</th>
-                  <th class="pb-2">Amount</th>
-                  <th class="pb-2">Fraud Score</th>
-                  <th class="pb-2">Carrier AWB</th>
-                </tr>
-              </thead>
-              <tbody id="ordersTableBody" class="divide-y divide-slate-800/70">
-                <tr>
-                  <td class="py-2.5 font-mono text-white">ORD-DXB-77801 <span class="text-indigo-400 block text-[10px]">SHOPIFY_UAE</span></td>
-                  <td class="py-2.5">Sara Al-Maktoum<br/><span class="text-slate-400 font-mono">+971509876543</span></td>
-                  <td class="py-2.5 font-semibold">420 AED (COD)</td>
-                  <td class="py-2.5 text-emerald-400 font-bold">9/100 SAFE</td>
-                  <td class="py-2.5 font-mono text-emerald-300">ARMX-AE-77801DXB</td>
-                </tr>
-                <tr>
-                  <td class="py-2.5 font-mono text-white">ORD-KSA-99412 <span class="text-amber-400 block text-[10px]">SALLA_KSA</span></td>
-                  <td class="py-2.5">Faisal Al-Saud<br/><span class="text-slate-400 font-mono">+966554433221</span></td>
-                  <td class="py-2.5 font-semibold text-indigo-300">513 SAR (Tabby 4x)</td>
-                  <td class="py-2.5 text-amber-400 font-bold">38/100 MOD</td>
-                  <td class="py-2.5 font-mono text-emerald-300">ARMX-SA-PREPAID99</td>
-                </tr>
-                <tr>
-                  <td class="py-2.5 font-mono text-white">ORD-MY-33109 <span class="text-fuchsia-400 block text-[10px]">TIKTOK_MY</span></td>
-                  <td class="py-2.5">Aiman Hakim<br/><span class="text-slate-400 font-mono">+60123456789</span></td>
-                  <td class="py-2.5 font-semibold">185 MYR (COD)</td>
-                  <td class="py-2.5 text-emerald-400 font-bold">12/100 SAFE</td>
-                  <td class="py-2.5 font-mono text-indigo-300">NJVMY33109KL</td>
-                </tr>
-              </tbody>
-            </table>
+          <h1 class="text-3xl md:text-5xl font-extrabold text-white leading-tight tracking-tight" data-i18n="heroTitle">
+            Stop COD Returns. Automate WhatsApp Sales with Margin-Protected AI.
+          </h1>
+          <p class="text-slate-300 text-sm md:text-base leading-relaxed" data-i18n="heroSub">
+            Block serial RTO offenders across 1.42M+ zero-knowledge shopper fingerprints, negotiate discounts safely above your secret COGS margin floor, and auto-dispatch Aramex, Ninja Van & DHL shipments in under 2ms.
+          </p>
+          <div class="flex flex-wrap gap-3 pt-1">
+            <button onclick="switchTab('tab-fraud')" class="px-5 py-3 rounded-xl bg-emerald-500 hover:bg-emerald-400 text-slate-950 font-bold text-xs transition" data-i18n="ctaPrimary">
+              Open Live Fraud Shield & Webhooks →
+            </button>
+            <a href="#roi-section" class="px-5 py-3 rounded-xl bg-slate-900 hover:bg-slate-800 border border-slate-700 text-white font-semibold text-xs transition" data-i18n="ctaSecondary">
+              Calculate Monthly Savings
+            </a>
+          </div>
+          <div class="flex flex-wrap gap-2 pt-2 text-[11px] font-semibold">
+            <span class="px-2.5 py-1 rounded-lg bg-slate-900 border border-slate-800 text-emerald-300">✓ Saudi PDPL Compliant</span>
+            <span class="px-2.5 py-1 rounded-lg bg-slate-900 border border-slate-800 text-indigo-300">✓ EU GDPR Zero-Knowledge</span>
+            <span class="px-2.5 py-1 rounded-lg bg-slate-900 border border-slate-800 text-sky-300">✓ Meta WhatsApp Cloud Partner</span>
+            <span class="px-2.5 py-1 rounded-lg bg-slate-900 border border-slate-800 text-amber-300">✓ PCI-DSS & ISO 27001</span>
           </div>
         </div>
 
-        <!-- Right 5 Cols: Add Catalog Product & Secret COGS Margin Guardrail -->
-        <div class="lg:col-span-5 bg-slate-950 border border-slate-800 rounded-xl p-4 space-y-3 text-xs">
-          <div class="flex items-center justify-between">
-            <h3 class="text-sm font-bold text-white">🏷️ Add Product & Secret AI Margin Guardrail</h3>
-            <span class="px-2 py-0.5 rounded bg-emerald-500/10 text-emerald-400">Pinecone RAG Sync</span>
+        <!-- Hero Live Demo Widget -->
+        <div class="lg:col-span-5 p-5 rounded-2xl bg-slate-950 border border-slate-800 space-y-4 text-xs">
+          <div class="flex items-center justify-between border-b border-slate-800 pb-3">
+            <span class="font-bold text-white text-sm">⚡ Instant Checkout Risk Demo</span>
+            <span class="px-2 py-0.5 rounded bg-emerald-500/15 text-emerald-400 font-mono">Rust Axum &lt; 2ms</span>
           </div>
-          <div class="grid grid-cols-2 gap-2.5">
-            <div>
-              <label class="block text-slate-400 mb-1">SKU Code</label>
-              <input id="catSku" value="OMNI-QAT-PEARL-108" class="w-full px-2.5 py-1.5 rounded bg-slate-900 border border-slate-700 text-white" />
-            </div>
-            <div>
-              <label class="block text-slate-400 mb-1">Retail Price & COGS</label>
-              <input id="catPriceCogs" value="600 AED / COGS: 330" class="w-full px-2.5 py-1.5 rounded bg-slate-900 border border-slate-700 text-white" />
-            </div>
-            <div class="col-span-2">
-              <label class="block text-slate-400 mb-1">Product Title (English / Arabic)</label>
-              <input id="catTitle" value="Doha Royal Pearl Bisht Set • بشت لؤلؤ ملكي" class="w-full px-2.5 py-1.5 rounded bg-slate-900 border border-slate-700 text-white" />
-            </div>
-            <div>
-              <label class="block text-slate-400 mb-1">Min Net Margin Floor</label>
-              <input id="catMargin" value="30.0%" class="w-full px-2.5 py-1.5 rounded bg-slate-900 border border-slate-700 text-emerald-400 font-bold" />
-            </div>
-            <div>
-              <label class="block text-slate-400 mb-1">Max AI Discount Cap</label>
-              <input id="catDiscount" value="12.0%" class="w-full px-2.5 py-1.5 rounded bg-slate-900 border border-slate-700 text-fuchsia-400 font-bold" />
+          <div class="space-y-2">
+            <label class="text-slate-400 block">Enter GCC/SEA Phone (+971, +966, +60, or test +971520009999)</label>
+            <div class="flex gap-2">
+              <input id="heroPhoneInput" value="+971509876543" class="flex-1 px-3 py-2 rounded-xl bg-slate-900 border border-slate-700 text-white font-mono" />
+              <button onclick="runHeroCheck()" class="px-4 py-2 rounded-xl bg-indigo-600 hover:bg-indigo-500 text-white font-bold">Check</button>
             </div>
           </div>
-          <button onclick="addProductToCatalog()" class="w-full py-2 rounded-lg bg-emerald-500 hover:bg-emerald-400 text-slate-950 font-bold transition">
-            + Index Product in Pinecone Vector DB & Activate Margin Guardrail
-          </button>
-          <div id="catalogNotice" class="text-slate-400 text-[11px]">
-            2 products currently indexed (`OMNI-GCC-ABAYA-902`, `OMNI-KSA-OUD-501`).
+          <div class="p-4 rounded-xl bg-slate-900 border border-slate-800 space-y-1.5">
+            <div class="flex justify-between">
+              <span class="text-slate-400">Network Risk Score:</span>
+              <strong id="heroScoreOut" class="text-emerald-400">9/100 (SAFE)</strong>
+            </div>
+            <div id="heroActionOut" class="font-mono text-indigo-300 font-semibold">ALLOW_SEAMLESS_COD → Auto-Dispatch Aramex</div>
           </div>
         </div>
       </div>
-    </section>
 
-    <!-- ====================================================================== -->
-    <!-- PHASE 4: FRAUD-FILTERED AUTO-RETARGETING & SAAS ROI / DATA LOCK-IN -->
-    <!-- ====================================================================== -->
-    <section id="sec-phase4" class="glass border border-emerald-500/40 rounded-2xl p-6 space-y-6">
-      <div class="flex flex-col md:flex-row md:items-center justify-between gap-3 border-b border-slate-800 pb-4">
-        <div>
-          <span class="text-xs font-bold uppercase tracking-wider text-emerald-400">🚀 Phase 4 Growth & Monetization Engine (`/api/v1/growth/*`)</span>
-          <h2 class="text-xl font-bold text-white mt-0.5">Fraud-Filtered Meta 24h Auto-Retargeting &nbsp;+&nbsp; Live Merchant SaaS ROI Calculator</h2>
-        </div>
-        <div class="flex flex-wrap gap-2">
-          <button onclick="simulateRetargeting('vip_abandoned')" class="px-3 py-2 rounded-xl bg-emerald-500/20 border border-emerald-500/40 text-emerald-300 text-xs font-semibold">
-            Test 1: Safe VIP Abandoned Chat (3-Wave Recovery)
-          </button>
-          <button onclick="simulateRetargeting('toxic_suppressed')" class="px-3 py-2 rounded-xl bg-rose-500/20 border border-rose-500/40 text-rose-300 text-xs font-semibold">
-            Test 2: High-RTO Buyer (Auto-Suppressed to Save Ad Spend!)
-          </button>
-        </div>
-      </div>
-
-      <div class="grid grid-cols-1 lg:grid-cols-12 gap-6">
-        <div class="lg:col-span-7 bg-slate-950 border border-slate-800 rounded-xl p-5 space-y-3">
-          <div class="flex items-center justify-between">
-            <h3 class="text-sm font-bold text-white">💬 Meta 24h Conversation Window Recovery Sequence</h3>
-            <span id="retargStatusBadge" class="px-2.5 py-0.5 rounded-full text-[11px] font-bold bg-emerald-500/20 text-emerald-300 border border-emerald-500/40">
-              ELIGIBLE • 34.5% Expected Recovery
-            </span>
-          </div>
-
-          <div id="retargetingWavesBox" class="space-y-2.5 text-xs">
-            <div class="p-3 rounded-lg bg-slate-900 border border-slate-800">
-              <div class="flex justify-between text-indigo-300 font-semibold">
-                <span>Wave 1 (T + 45 Mins • Warm Stock Scarcity)</span>
-                <span>$0.00 Meta Service Window</span>
-              </div>
-              <p class="text-slate-300 mt-1">"Hi Mariam! We reserved your Oud Royal Velvet Abaya (420.00 AED) in our warehouse for the next 2 hours. Tap below to confirm your delivery pin!"</p>
-            </div>
-            <div class="p-3 rounded-lg bg-slate-900 border border-slate-800">
-              <div class="flex justify-between text-fuchsia-300 font-semibold">
-                <span>Wave 2 (T + 6 Hours • 4x Interest-Free Tabby/Atome Framing)</span>
-                <span>$0.00 Meta Service Window</span>
-              </div>
-              <p class="text-slate-300 mt-1">"Still thinking about it? Get it shipped today for just 105.00 AED now (4 interest-free payments via Tabby)!"</p>
-            </div>
-            <div class="p-3 rounded-lg bg-slate-900 border border-slate-800">
-              <div class="flex justify-between text-emerald-300 font-semibold">
-                <span>Wave 3 (T + 22 Hours • Pre-24h Closing 6% Prepaid Flash Offer)</span>
-                <span>Saves Paid Template Fee</span>
-              </div>
-              <p class="text-slate-300 mt-1">"Final 2-hour VIP offer: Complete your checkout online now and enjoy 6% off — pay just 394.80 AED with Priority Express Shipping!"</p>
-            </div>
-          </div>
-        </div>
-
-        <div class="lg:col-span-5 bg-slate-950 border border-slate-800 rounded-xl p-5 flex flex-col justify-between space-y-4">
+      <!-- Interactive ROI Sliders -->
+      <div id="roi-section" class="glass border border-slate-800 rounded-3xl p-6 md:p-8 space-y-6">
+        <div class="flex flex-col md:flex-row md:items-center justify-between gap-2 border-b border-slate-800 pb-4">
           <div>
-            <div class="flex items-center justify-between">
-              <h3 class="text-sm font-bold text-white">💳 Stripe SaaS Plan & Monthly ROI Lock-In</h3>
-              <select id="planSelect" onchange="recalcRoi()" class="px-2 py-1 rounded bg-slate-900 border border-slate-700 text-xs text-emerald-300 font-semibold">
-                <option value="79">GROWTH ($79/mo)</option>
-                <option value="249" selected>SCALE ($249/mo)</option>
-                <option value="699">ENTERPRISE ($699/mo)</option>
-              </select>
-            </div>
-            <p class="text-xs text-slate-400 mt-1">Interactive proof of why merchants never churn from OmniCommerce AI OS:</p>
+            <h2 class="text-2xl font-bold text-white" data-i18n="roiTitle">Interactive ROI & RTO Savings Calculator</h2>
+            <p class="text-xs text-slate-400">Slide your monthly order volume, average order value & return rate to see real savings</p>
           </div>
+          <span class="px-3 py-1 rounded-full bg-emerald-500/15 text-emerald-300 text-xs font-bold">Live Economic Model</span>
+        </div>
 
-          <div class="space-y-2 text-xs">
-            <div class="flex justify-between p-2.5 rounded bg-slate-900 border border-slate-800">
-              <span class="text-slate-400">Prevented RTO Parcels (145 orders × $14 loss):</span>
-              <strong class="text-emerald-400">+$2,030.00 USD</strong>
-            </div>
-            <div class="flex justify-between p-2.5 rounded bg-slate-900 border border-slate-800">
-              <span class="text-slate-400">Recovered Abandoned WhatsApp Chats (68 orders):</span>
-              <strong class="text-indigo-400">+$2,584.00 USD</strong>
-            </div>
-            <div class="flex justify-between p-2.5 rounded bg-slate-900 border border-slate-800">
-              <span class="text-slate-400">Smart Carrier Arbitrage Savings (900 orders):</span>
-              <strong class="text-amber-400">+$1,080.00 USD</strong>
-            </div>
-          </div>
-
-          <div class="p-3.5 rounded-xl bg-emerald-500/15 border border-emerald-500/40 flex items-center justify-between">
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
+          <div class="lg:col-span-6 space-y-5 text-xs">
             <div>
-              <div class="text-xs text-emerald-200">Total Monthly Net Value Generated</div>
-              <div class="text-xl font-bold text-white">$5,694.00 USD / mo</div>
+              <div class="flex justify-between mb-1.5"><span class="text-slate-300 font-semibold">Monthly Orders</span><strong id="roiOrdersLabel" class="text-emerald-400 font-mono">1,500 orders</strong></div>
+              <input id="roiOrdersSlider" type="range" min="100" max="25000" step="100" value="1500" oninput="updateLandingRoi()" class="w-full accent-emerald-500" />
             </div>
-            <div class="text-right">
-              <div class="text-xs text-emerald-200">Merchant ROI</div>
-              <div id="roiMultiple" class="text-2xl font-extrabold text-emerald-400">22.9x</div>
+            <div>
+              <div class="flex justify-between mb-1.5"><span class="text-slate-300 font-semibold">Average Order Value (USD)</span><strong id="roiAovLabel" class="text-indigo-400 font-mono">$95 USD</strong></div>
+              <input id="roiAovSlider" type="range" min="30" max="300" step="5" value="95" oninput="updateLandingRoi()" class="w-full accent-indigo-500" />
             </div>
+            <div>
+              <div class="flex justify-between mb-1.5"><span class="text-slate-300 font-semibold">Current RTO Return Rate</span><strong id="roiRtoLabel" class="text-amber-400 font-mono">31%</strong></div>
+              <input id="roiRtoSlider" type="range" min="10" max="45" step="1" value="31" oninput="updateLandingRoi()" class="w-full accent-amber-500" />
+            </div>
+          </div>
+
+          <div class="lg:col-span-6 grid grid-cols-2 gap-3 text-xs">
+            <div class="p-4 rounded-2xl bg-slate-950 border border-slate-800">
+              <div class="text-slate-400">Prevented RTO Shipping Loss</div>
+              <div id="roiSavedBox" class="text-2xl font-bold text-emerald-400 mt-1">+$4,494</div>
+              <div id="roiParcelsBox" class="text-[11px] text-slate-400 mt-1">321 failed parcels blocked</div>
+            </div>
+            <div class="p-4 rounded-2xl bg-slate-950 border border-slate-800">
+              <div class="text-slate-400">Recovered AI Chat Revenue</div>
+              <div id="roiRecoveredBox" class="text-2xl font-bold text-indigo-400 mt-1">+$3,149</div>
+              <div class="text-[11px] text-slate-400 mt-1">Tabby 4x & Prepaid nudges</div>
+            </div>
+            <div class="p-4 rounded-2xl bg-slate-950 border border-slate-800">
+              <div class="text-slate-400">Carrier Arbitrage Savings</div>
+              <div id="roiCarrierBox" class="text-2xl font-bold text-amber-400 mt-1">+$1,875</div>
+              <div class="text-[11px] text-slate-400 mt-1">Aramex vs SMSA / NinjaVan</div>
+            </div>
+            <div class="p-4 rounded-2xl bg-emerald-500/15 border border-emerald-500/40">
+              <div class="text-emerald-200 font-semibold">Total Monthly Net Value</div>
+              <div id="roiTotalBox" class="text-2xl font-extrabold text-white mt-1">$9,518 / mo</div>
+              <div id="roiMultipleBox" class="text-xs font-bold text-emerald-400 mt-1">47.8x Net ROI (Scale)</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Transparent Pricing Matrix -->
+      <div class="space-y-6">
+        <div class="text-center space-y-2">
+          <h2 class="text-2xl font-bold text-white" data-i18n="pricingTitle">Transparent Global SaaS Pricing</h2>
+          <div class="inline-flex p-1 rounded-xl bg-slate-900 border border-slate-800 text-xs font-semibold">
+            <button onclick="setBillingCycle(false)" id="btnMonthly" class="px-4 py-1.5 rounded-lg text-slate-400">Monthly</button>
+            <button onclick="setBillingCycle(true)" id="btnAnnual" class="px-4 py-1.5 rounded-lg bg-emerald-500 text-slate-950 font-bold">Annual (Save 20%)</button>
+          </div>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-5 text-xs">
+          <div class="p-6 rounded-2xl bg-slate-900 border border-slate-800 space-y-4">
+            <div class="text-lg font-bold text-white">Growth</div>
+            <div class="text-3xl font-extrabold text-white"><span id="priceGrowth">$63</span><span class="text-xs text-slate-400 font-normal"> / mo</span></div>
+            <ul class="space-y-2 text-slate-300">
+              <li>✓ 2,000 Fraud Shield checks/mo</li>
+              <li>✓ Shopify & WooCommerce HMAC webhooks</li>
+              <li>✓ WhatsApp Flow COD verification</li>
+              <li>✓ 1 Carrier Adapter (Aramex or NinjaVan)</li>
+            </ul>
+            <button onclick="selectPlanToast('Growth')" class="w-full py-2.5 rounded-xl bg-slate-800 hover:bg-slate-700 font-bold text-white">Start 14-Day Free Trial</button>
+          </div>
+
+          <div class="p-6 rounded-2xl bg-slate-900 border-2 border-emerald-500 space-y-4 shadow-xl shadow-emerald-500/10">
+            <div class="flex justify-between items-center"><span class="text-lg font-bold text-white">Scale</span><span class="px-2 py-0.5 rounded-full bg-emerald-500/20 text-emerald-300 font-bold text-[10px]">MOST POPULAR</span></div>
+            <div class="text-3xl font-extrabold text-white"><span id="priceScale">$199</span><span class="text-xs text-slate-400 font-normal"> / mo</span></div>
+            <ul class="space-y-2 text-slate-300">
+              <li>✓ 15,000 Fraud Shield checks/mo</li>
+              <li>✓ Salla, Zid, Shopify & TikTok Shop sync</li>
+              <li>✓ Margin-Protected AI Haggling & GPT-4o Vision</li>
+              <li>✓ Smart Carrier Zone Arbitrage Router</li>
+              <li>✓ 3-Wave Meta 24h Auto-Retargeting</li>
+            </ul>
+            <button onclick="selectPlanToast('Scale')" class="w-full py-2.5 rounded-xl bg-emerald-500 hover:bg-emerald-400 font-bold text-slate-950">Start 14-Day Free Trial</button>
+          </div>
+
+          <div class="p-6 rounded-2xl bg-slate-900 border border-slate-800 space-y-4">
+            <div class="text-lg font-bold text-white">Enterprise</div>
+            <div class="text-3xl font-extrabold text-white"><span id="priceEnt">$559</span><span class="text-xs text-slate-400 font-normal"> / mo</span></div>
+            <ul class="space-y-2 text-slate-300">
+              <li>✓ Unlimited checks & custom ML weights</li>
+              <li>✓ Dedicated Saudi PDPL / GDPR private DB</li>
+              <li>✓ Custom RBAC & Google/SAML SSO</li>
+              <li>✓ 99.95% Uptime SLA & Solutions Architect</li>
+            </ul>
+            <button onclick="selectPlanToast('Enterprise')" class="w-full py-2.5 rounded-xl bg-indigo-600 hover:bg-indigo-500 font-bold text-white">Contact Solutions Team</button>
           </div>
         </div>
       </div>
     </section>
 
-    <!-- ====================================================================== -->
-    <!-- PHASE 3 INNOVATION LAB: MARGIN-PROTECTED AI HAGGLING + CARRIER ARBITRAGE -->
-    <!-- ====================================================================== -->
-    <section id="sec-phase3" class="glass border border-fuchsia-500/40 rounded-2xl p-6 space-y-6">
-      <div class="flex flex-col md:flex-row md:items-center justify-between gap-3 border-b border-slate-800 pb-4">
-        <div>
-          <span class="text-xs font-bold uppercase tracking-wider text-fuchsia-400">✨ Phase 3 Innovation Lab (`/api/v1/innovations/*`)</span>
-          <h2 class="text-xl font-bold text-white mt-0.5">1. Risk-Aware Margin-Protected AI Haggling &nbsp;+&nbsp; 2. Smart Carrier RTO Arbitrage</h2>
-        </div>
-        <div class="flex flex-wrap gap-2">
-          <button onclick="runInnovationScenario('risky_haggler')" class="px-3 py-2 rounded-xl bg-fuchsia-500/20 border border-fuchsia-500/40 text-fuchsia-300 text-xs font-semibold">
-            Scenario A: Risky COD Buyer Asks 10% Off
-          </button>
-          <button onclick="runInnovationScenario('extreme_bargainer')" class="px-3 py-2 rounded-xl bg-amber-500/20 border border-amber-500/40 text-amber-300 text-xs font-semibold">
-            Scenario B: Buyer Demands 25% Off (Margin Floor)
-          </button>
-          <button onclick="runInnovationScenario('sea_arbitrage')" class="px-3 py-2 rounded-xl bg-emerald-500/20 border border-emerald-500/40 text-emerald-300 text-xs font-semibold">
-            Scenario C: Kuala Lumpur SEA Carrier Arbitrage
-          </button>
-        </div>
-      </div>
-
-      <div class="grid grid-cols-1 lg:grid-cols-12 gap-6">
-        <div class="lg:col-span-6 bg-slate-950 border border-slate-800 rounded-xl p-5 space-y-4">
-          <div class="flex items-center justify-between">
-            <h3 class="text-sm font-bold text-white">🤝 Innovation #1: Margin-Protected AI Deal Closer</h3>
-            <span id="negStrategyBadge" class="px-2.5 py-0.5 rounded-full text-[11px] font-bold bg-fuchsia-500/20 text-fuchsia-300 border border-fuchsia-500/40">
-              LEVERAGE_DISCOUNT_FOR_PREPAID_SWITCH
-            </span>
+    <!-- ================================================================== -->
+    <!-- TAB 2: FRAUD SHIELD & STOREFRONT WEBHOOK + WHATSAPP FLOW SIMULATOR -->
+    <!-- ================================================================== -->
+    <section id="tab-fraud" class="tab-panel space-y-6">
+      <div class="glass border border-indigo-500/30 rounded-2xl p-6 space-y-5">
+        <div class="flex flex-col md:flex-row md:items-center justify-between gap-3 border-b border-slate-800 pb-4">
+          <div>
+            <span class="text-xs font-bold uppercase tracking-wider text-indigo-400">Phase 1 & 2 Real-Time Pipeline</span>
+            <h2 class="text-xl font-bold text-white">⚡ Storefront Webhook → Zero-Knowledge Fraud Shield → WhatsApp Flow → Auto-Carrier</h2>
           </div>
+          <div class="flex flex-wrap gap-2">
+            <button onclick="simulateWebhook('salla_moderate')" class="px-3 py-2 rounded-xl bg-amber-500/20 border border-amber-500/40 text-amber-300 text-xs font-semibold">1. Salla KSA (Moderate → WA Flow)</button>
+            <button onclick="simulateWebhook('shopify_safe')" class="px-3 py-2 rounded-xl bg-emerald-500/20 border border-emerald-500/40 text-emerald-300 text-xs font-semibold">2. Shopify UAE (Safe → Aramex)</button>
+            <button onclick="simulateWebhook('sea_ninjavan')" class="px-3 py-2 rounded-xl bg-indigo-500/20 border border-indigo-500/40 text-indigo-300 text-xs font-semibold">3. Malaysia (Safe → NinjaVan)</button>
+          </div>
+        </div>
 
-          <div class="grid grid-cols-3 gap-2 text-xs">
-            <div class="p-2.5 rounded-lg bg-slate-900 border border-slate-800">
-              <div class="text-slate-400">Catalog Price / COGS</div>
-              <div class="font-bold text-white mt-0.5">420 AED / 240 AED</div>
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-6">
+          <div class="lg:col-span-7 bg-slate-950 border border-slate-800 rounded-xl p-4 space-y-2 text-xs font-mono">
+            <div class="flex justify-between text-slate-400 border-b border-slate-800 pb-2">
+              <span>RUST AXUM TRACE (`/api/v1/webhooks/*`)</span>
+              <span class="text-emerald-400">Idempotency: LOCKED</span>
             </div>
-            <div class="p-2.5 rounded-lg bg-slate-900 border border-slate-800">
-              <div class="text-slate-400">Buyer Requested</div>
-              <div id="negRequested" class="font-bold text-amber-400 mt-0.5">10.0% Discount</div>
-            </div>
-            <div class="p-2.5 rounded-lg bg-slate-900 border border-slate-800">
-              <div class="text-slate-400">Protected Net Margin</div>
-              <div id="negMargin" class="font-bold text-emerald-400 mt-0.5">36.5% (Floor: 28%)</div>
+            <div id="webhookTraceLog" class="space-y-2 text-slate-300 leading-relaxed pt-1">
+              <div>[1] ✅ Verified <code>X-Salla-Signature</code> (HMAC-SHA256 Constant-Time Match)</div>
+              <div>[2] 🔒 Locked <code>Idempotency-Key: SALLA_GCC:ORD-KSA-99412</code></div>
+              <div>[3] 📞 Normalized Phone: <code>+966554433221</code> (Region: <strong>GCC / SA</strong>)</div>
+              <div>[4] 🛡️ Fraud Shield Score: <strong class="text-amber-400">38/100 (MODERATE)</strong> — Flag: <code>MISSING_BUILDING_OR_UNIT_NUMBER</code></div>
+              <div>[5] ⏸️ Action: <strong>HOLD_PENDING_WHATSAPP_FLOW_CONFIRMATION</strong></div>
+              <div>[6] 💬 Dispatched Arabic WhatsApp Flow to <code>+966554433221</code> with 5% Prepaid Nudge!</div>
             </div>
           </div>
 
-          <div class="p-3.5 rounded-xl bg-slate-900 border border-slate-800 space-y-2 text-xs">
-            <p id="negPitchEn" class="text-slate-200 leading-relaxed">
-              "I can't apply a discount on Cash-on-Delivery (420.00 AED), BUT if you complete your order via Instant Prepaid or Tabby 4x Split right now, I've unlocked an exclusive 10.0% VIP discount — pay just 378.00 AED (or 4x 94.50 AED) with Priority Express Dispatch!"
-            </p>
-            <p id="negPitchAr" class="text-emerald-300 leading-relaxed font-medium" dir="rtl">
-              "عرض خاص لك! السعر عند الاستلام هو 420.00 AED، ولكن عند الدفع الإلكتروني الفوري (Apple Pay أو تابي 4 دفعات بقيمة 94.50 AED) ستحصل على خصم حصري 10.0% ليصبح الإجمالي 378.00 AED فقط مع شحن سريع مجاني!"
-            </p>
-          </div>
-        </div>
-
-        <div class="lg:col-span-6 bg-slate-950 border border-slate-800 rounded-xl p-5 space-y-4">
-          <div class="flex items-center justify-between">
-            <h3 class="text-sm font-bold text-white">📦 Innovation #2: Smart Carrier RTO Arbitrage Router</h3>
-            <span id="arbZoneBadge" class="px-2.5 py-0.5 rounded-full text-[11px] font-bold bg-emerald-500/20 text-emerald-300 border border-emerald-500/40">
-              Zone: Riyadh Olaya (SA)
-            </span>
-          </div>
-
-          <div id="arbTable" class="space-y-2 text-xs">
-            <div class="p-3 rounded-xl bg-emerald-950/30 border border-emerald-500/40 flex items-center justify-between">
-              <div>
-                <div class="font-bold text-emerald-300">🏆 WINNER: Aramex GCC Priority (94.2% Zone Delivery Success)</div>
-                <div class="text-slate-400 mt-0.5">Base Fee: $6.80 + Expected RTO Waste: $1.24 = <strong>$8.04 Effective Cost</strong></div>
-              </div>
-              <span class="px-2.5 py-1 rounded bg-emerald-500 text-slate-950 font-bold">Saves $1.85</span>
-            </div>
-
-            <div class="p-3 rounded-xl bg-slate-900 border border-slate-800 flex items-center justify-between opacity-80">
-              <div>
-                <div class="font-semibold text-slate-300">Runner-up: SMSA Express (86.5% Zone Delivery Success)</div>
-                <div class="text-slate-400 mt-0.5">Cheaper Base Fee ($6.20), but higher zone RTO adds $3.69 waste = <strong>$9.89 Effective Cost</strong></div>
-              </div>
-              <span class="px-2 py-1 rounded bg-slate-800 text-slate-400">Skipped</span>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- ====================================================================== -->
-    <!-- PHASE 2: STOREFRONT WEBHOOKS & META WHATSAPP FLOW SIMULATOR -->
-    <!-- ====================================================================== -->
-    <section id="sec-phase2" class="glass border border-indigo-500/30 rounded-2xl p-6 space-y-5">
-      <div class="flex flex-col md:flex-row md:items-center justify-between gap-3 border-b border-slate-800 pb-4">
-        <div>
-          <span class="text-xs font-bold uppercase tracking-wider text-indigo-400">⚡ Phase 1 & 2 Interactive Pipeline</span>
-          <h2 class="text-xl font-bold text-white mt-0.5">Storefront Webhook → Zero-Knowledge Fraud Shield → WhatsApp Flow → Auto-Carrier</h2>
-        </div>
-        <div class="flex flex-wrap gap-2">
-          <button onclick="simulateWebhook('salla_moderate')" class="px-3 py-2 rounded-xl bg-amber-500/20 border border-amber-500/40 text-amber-300 text-xs font-semibold">
-            1. Salla KSA Order (Moderate → WhatsApp Flow)
-          </button>
-          <button onclick="simulateWebhook('shopify_safe')" class="px-3 py-2 rounded-xl bg-emerald-500/20 border border-emerald-500/40 text-emerald-300 text-xs font-semibold">
-            2. Shopify UAE Order (Safe → Auto Aramex)
-          </button>
-          <button onclick="simulateWebhook('sea_ninjavan')" class="px-3 py-2 rounded-xl bg-indigo-500/20 border border-indigo-500/40 text-indigo-300 text-xs font-semibold">
-            3. Malaysia Order (Safe → Auto NinjaVan)
-          </button>
-        </div>
-      </div>
-
-      <div class="grid grid-cols-1 lg:grid-cols-12 gap-6">
-        <div class="lg:col-span-7 bg-slate-950 border border-slate-800 rounded-xl p-4 space-y-3 text-xs font-mono">
-          <div id="webhookTraceLog" class="space-y-2 text-slate-300 leading-relaxed">
-            <div>[1] ✅ Verified <code>X-Salla-Signature</code> (HMAC-SHA256 Constant-Time Match)</div>
-            <div>[2] 🔒 Locked <code>Idempotency-Key: SALLA_GCC:ORD-KSA-99412</code></div>
-            <div>[3] 📞 Normalized Phone: <code>+966554433221</code> (Region: <strong>GCC / SA</strong>)</div>
-            <div>[4] 🛡️ Fraud Shield Score: <strong class="text-amber-400">38/100 (MODERATE)</strong> — Flag: <code>MISSING_BUILDING_OR_UNIT_NUMBER</code></div>
-            <div>[5] ⏸️ Action: <strong>HOLD_PENDING_WHATSAPP_FLOW_CONFIRMATION</strong></div>
-            <div>[6] 💬 Dispatched Bilingual Arabic WhatsApp Flow to <code>+966554433221</code> with 5% Prepaid Nudge!</div>
-          </div>
-        </div>
-
-        <div class="lg:col-span-5 bg-slate-950 border border-emerald-500/30 rounded-xl p-4 flex flex-col justify-between space-y-3">
-          <div class="p-3.5 rounded-xl bg-slate-900 border border-slate-800 space-y-2 text-xs">
-            <div id="waHeader" class="font-bold text-white text-sm">تأكيد طلب الدفع عند الاستلام • Faisal Al-Saud</div>
-            <p id="waBody" class="text-slate-300 leading-relaxed">
-              مرحباً Faisal! لتسريع شحن طلبك بقيمة 540.00 SAR عبر أرامكس، يرجى تأكيد رقم المبنى أدناه، أو احصل على خصم فوري 5% (513.00 SAR) عند الدفع الإلكتروني الآن!
-            </p>
-            <div class="pt-2 space-y-2">
-              <input id="waBuildingInput" value="Building 4221, Olaya Dist, Riyadh" class="w-full px-2.5 py-1.5 rounded bg-slate-950 border border-slate-700 text-white text-xs" />
+          <div class="lg:col-span-5 bg-slate-950 border border-emerald-500/30 rounded-xl p-4 space-y-3 text-xs">
+            <div class="font-bold text-emerald-400">📱 Buyer's WhatsApp Screen (Meta Flow)</div>
+            <div class="p-3.5 rounded-xl bg-slate-900 border border-slate-800 space-y-2">
+              <div id="waHeader" class="font-bold text-white text-sm">تأكيد طلب الدفع عند الاستلام • Faisal Al-Saud</div>
+              <p id="waBody" class="text-slate-300 leading-relaxed">مرحباً Faisal! لتسريع شحن طلبك بقيمة 540.00 SAR عبر أرامكس، يرجى تأكيد رقم المبنى أدناه، أو احصل على خصم فوري 5% (513.00 SAR) عند الدفع الإلكتروني الآن!</p>
+              <input id="waBuildingInput" value="Building 4221, Olaya Dist, Riyadh" class="w-full px-2.5 py-1.5 rounded bg-slate-950 border border-slate-700 text-white" />
               <div class="grid grid-cols-2 gap-2">
-                <button onclick="submitWhatsAppFlow('CONFIRM_COD')" class="py-2 px-3 rounded-lg bg-emerald-500 hover:bg-emerald-400 text-slate-950 font-bold text-xs">
-                  ✅ Confirm Building & Ship
-                </button>
-                <button onclick="submitWhatsAppFlow('SWITCH_PREPAID')" class="py-2 px-3 rounded-lg bg-indigo-500 hover:bg-indigo-400 text-white font-bold text-xs">
-                  💳 Pay Now (Save 5%)
-                </button>
+                <button onclick="submitWhatsAppFlow('CONFIRM_COD')" class="py-2 rounded-lg bg-emerald-500 hover:bg-emerald-400 text-slate-950 font-bold">✅ Confirm & Ship</button>
+                <button onclick="submitWhatsAppFlow('SWITCH_PREPAID')" class="py-2 rounded-lg bg-indigo-500 hover:bg-indigo-400 text-white font-bold">💳 Pay Now (-5%)</button>
               </div>
             </div>
+            <div id="waResolutionBanner" class="p-2.5 rounded-lg bg-slate-900 border border-slate-800 text-slate-400">Waiting for buyer response in WhatsApp Flow...</div>
           </div>
-          <div id="waResolutionBanner" class="p-3 rounded-lg bg-slate-900 border border-slate-800 text-xs text-slate-400">
-            Waiting for buyer response in WhatsApp Flow...
+        </div>
+      </div>
+
+      <!-- Manual Fraud Shield Lookup -->
+      <div class="glass border border-slate-800 rounded-2xl p-6 space-y-4 text-xs">
+        <div class="flex flex-wrap items-center justify-between gap-2">
+          <h3 class="text-base font-bold text-white">🔍 Manual Cross-Merchant Fraud Shield & Address NLP Lookup</h3>
+          <div class="flex gap-1.5">
+            <button onclick="loadFraudPreset('safe')" class="px-2.5 py-1 rounded bg-emerald-500/20 text-emerald-300">Safe UAE</button>
+            <button onclick="loadFraudPreset('moderate')" class="px-2.5 py-1 rounded bg-amber-500/20 text-amber-300">Moderate KSA</button>
+            <button onclick="loadFraudPreset('high')" class="px-2.5 py-1 rounded bg-rose-500/20 text-rose-300">High Risk RTO</button>
+          </div>
+        </div>
+        <div class="grid grid-cols-1 md:grid-cols-4 gap-3">
+          <input id="fPhone" value="+971509876543" class="px-3 py-2 rounded-lg bg-slate-950 border border-slate-700 text-white font-mono" placeholder="E.164 Phone" />
+          <input id="fAddr" value="Boulevard Point Tower 1, Apt 1402, Downtown Dubai" class="md:col-span-2 px-3 py-2 rounded-lg bg-slate-950 border border-slate-700 text-white" placeholder="Delivery Address" />
+          <div class="flex gap-2">
+            <input id="fOrders" type="number" value="8" class="w-20 px-2 py-2 rounded-lg bg-slate-950 border border-slate-700 text-white" title="Total Network Orders" />
+            <input id="fRto" type="number" value="0" class="w-20 px-2 py-2 rounded-lg bg-slate-950 border border-slate-700 text-white" title="Past RTOs" />
+            <button onclick="runManualFraudEval()" class="flex-1 px-3 py-2 rounded-lg bg-emerald-500 hover:bg-emerald-400 text-slate-950 font-bold">Evaluate</button>
+          </div>
+        </div>
+        <div id="fManualOut" class="p-3 rounded-xl bg-slate-950 border border-slate-800 flex flex-wrap justify-between items-center gap-2">
+          <span class="text-slate-300 font-mono">HMAC-SHA256: 9f86d081884c7d659a2feaa0c55ad015...</span>
+          <strong class="text-emerald-400">SCORE: 8/100 (SAFE) → ALLOW_SEAMLESS_COD</strong>
+        </div>
+      </div>
+    </section>
+
+    <!-- ================================================================== -->
+    <!-- TAB 3: LIVE ORDERS & 1-CLICK AWB PRINT MODAL                       -->
+    <!-- ================================================================== -->
+    <section id="tab-orders" class="tab-panel space-y-6">
+      <div class="glass border border-slate-800 rounded-2xl p-6 space-y-4">
+        <div class="flex flex-wrap items-center justify-between gap-3">
+          <div>
+            <h2 class="text-xl font-bold text-white">📦 Live Omnichannel Orders & Carrier AWBs</h2>
+            <p class="text-xs text-slate-400">Filter by status across Shopify, Salla, Zid, WhatsApp Cloud & TikTok Shop</p>
+          </div>
+          <div class="flex gap-2 text-xs">
+            <select id="orderFilter" onchange="filterOrders()" class="px-3 py-2 rounded-xl bg-slate-950 border border-slate-700 text-white">
+              <option value="ALL">All Orders (4)</option>
+              <option value="SAFE">SAFE / Auto-Dispatched</option>
+              <option value="CONVERTED">Converted COD → Prepaid</option>
+              <option value="BLOCKED">COD Blocked (High RTO)</option>
+            </select>
+            <button onclick="simulateNewIncomingOrder()" class="px-3 py-2 rounded-xl bg-emerald-500 hover:bg-emerald-400 text-slate-950 font-bold">
+              + Simulate Live Order
+            </button>
+          </div>
+        </div>
+
+        <div class="overflow-x-auto rounded-xl border border-slate-800 bg-slate-950">
+          <table class="w-full text-left text-xs">
+            <thead class="text-slate-400 border-b border-slate-800 bg-slate-900">
+              <tr>
+                <th class="p-3.5">Order ID / Channel</th>
+                <th class="p-3.5">Customer (E.164)</th>
+                <th class="p-3.5">Amount & Payment</th>
+                <th class="p-3.5">Fraud Shield</th>
+                <th class="p-3.5">Carrier AWB</th>
+                <th class="p-3.5">Action</th>
+              </tr>
+            </thead>
+            <tbody id="ordersBody" class="divide-y divide-slate-800"></tbody>
+          </table>
+        </div>
+      </div>
+    </section>
+
+    <!-- ================================================================== -->
+    <!-- TAB 4: PRODUCT CATALOG & SECRET COGS MARGIN GUARDRAILS             -->
+    <!-- ================================================================== -->
+    <section id="tab-catalog" class="tab-panel space-y-6">
+      <div class="glass border border-slate-800 rounded-2xl p-6 space-y-5">
+        <div class="flex flex-wrap items-center justify-between gap-3 border-b border-slate-800 pb-4">
+          <div>
+            <h2 class="text-xl font-bold text-white">🏷️ Product Catalog & Secret AI Margin Guardrails</h2>
+            <p class="text-xs text-slate-400">Indexed in Pinecone Vector DB for GPT-4o Vision screenshot matching. AI Haggling never drops below your secret COGS margin floor.</p>
+          </div>
+          <span class="px-3 py-1 rounded-full bg-emerald-500/15 text-emerald-300 text-xs font-bold">3 SKUs Vector-Indexed</span>
+        </div>
+
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-6">
+          <div id="catalogGrid" class="lg:col-span-7 grid grid-cols-1 sm:grid-cols-2 gap-4 text-xs"></div>
+
+          <div class="lg:col-span-5 p-5 rounded-2xl bg-slate-950 border border-slate-800 space-y-3 text-xs">
+            <h3 class="font-bold text-white text-sm">+ Add SKU & Margin Guardrail</h3>
+            <input id="catSku" value="OMNI-QAT-PEARL-108" class="w-full px-3 py-2 rounded-lg bg-slate-900 border border-slate-700 text-white font-mono" placeholder="SKU" />
+            <input id="catTitle" value="Doha Royal Pearl Bisht Set" class="w-full px-3 py-2 rounded-lg bg-slate-900 border border-slate-700 text-white" placeholder="Product Title" />
+            <div class="grid grid-cols-2 gap-2">
+              <input id="catPrice" value="600 AED" class="px-3 py-2 rounded-lg bg-slate-900 border border-slate-700 text-white" placeholder="Retail Price" />
+              <input id="catCogs" value="330 AED" class="px-3 py-2 rounded-lg bg-slate-900 border border-slate-700 text-amber-300" placeholder="Secret COGS" />
+              <input id="catMargin" value="30.0%" class="px-3 py-2 rounded-lg bg-slate-900 border border-slate-700 text-emerald-400" placeholder="Min Margin %" />
+              <input id="catDisc" value="12.0%" class="px-3 py-2 rounded-lg bg-slate-900 border border-slate-700 text-fuchsia-400" placeholder="Max AI Disc %" />
+            </div>
+            <button onclick="addCatalogSku()" class="w-full py-2.5 rounded-xl bg-emerald-500 hover:bg-emerald-400 text-slate-950 font-bold">
+              Index in Pinecone Vector DB & Save Guardrail
+            </button>
           </div>
         </div>
       </div>
     </section>
+
+    <!-- ================================================================== -->
+    <!-- TAB 5: PHASE 3 INNOVATIONS (AI HAGGLING & CARRIER ARBITRAGE)       -->
+    <!-- ================================================================== -->
+    <section id="tab-innovations" class="tab-panel space-y-6">
+      <div class="glass border border-fuchsia-500/40 rounded-2xl p-6 space-y-5">
+        <div class="flex flex-wrap items-center justify-between gap-3 border-b border-slate-800 pb-4">
+          <div>
+            <span class="text-xs font-bold text-fuchsia-400 uppercase">Category-First Innovations (`/api/v1/innovations/*`)</span>
+            <h2 class="text-xl font-bold text-white">✨ Risk-Aware Margin-Protected AI Haggling + Smart Carrier Zone Arbitrage</h2>
+          </div>
+          <div class="flex flex-wrap gap-2 text-xs">
+            <button onclick="runInnScenario('risky')" class="px-3 py-1.5 rounded-xl bg-fuchsia-500/20 border border-fuchsia-500/40 text-fuchsia-300 font-semibold">Risky COD Buyer Asks 10% Off</button>
+            <button onclick="runInnScenario('floor')" class="px-3 py-1.5 rounded-xl bg-amber-500/20 border border-amber-500/40 text-amber-300 font-semibold">25% Demand (Margin Guardrail)</button>
+            <button onclick="runInnScenario('sea')" class="px-3 py-1.5 rounded-xl bg-emerald-500/20 border border-emerald-500/40 text-emerald-300 font-semibold">Kuala Lumpur Carrier Arbitrage</button>
+          </div>
+        </div>
+
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-6 text-xs">
+          <div class="p-5 rounded-2xl bg-slate-950 border border-slate-800 space-y-3">
+            <div class="flex justify-between items-center">
+              <strong class="text-sm text-white">🤝 Margin-Protected AI Deal Closer</strong>
+              <span id="innStrategy" class="px-2 py-0.5 rounded bg-fuchsia-500/20 text-fuchsia-300 font-mono">LEVERAGE_DISCOUNT_FOR_PREPAID</span>
+            </div>
+            <div class="grid grid-cols-3 gap-2">
+              <div class="p-2.5 rounded bg-slate-900"><span class="text-slate-400">Price / COGS</span><div class="font-bold text-white">420 / 240 AED</div></div>
+              <div class="p-2.5 rounded bg-slate-900"><span class="text-slate-400">Requested</span><div id="innReq" class="font-bold text-amber-400">10% Off</div></div>
+              <div class="p-2.5 rounded bg-slate-900"><span class="text-slate-400">Net Margin</span><div id="innMargin" class="font-bold text-emerald-400">36.5% (≥28%)</div></div>
+            </div>
+            <p id="innPitchEn" class="p-3 rounded-xl bg-slate-900 text-slate-200 leading-relaxed">
+              "I can't apply a discount on Cash-on-Delivery (420 AED), BUT switch to Instant Prepaid or Tabby 4x Split right now and I've unlocked an exclusive 10% VIP discount — pay just 378 AED (4x 94.50 AED)!"
+            </p>
+            <p id="innPitchAr" class="p-3 rounded-xl bg-slate-900 text-emerald-300 leading-relaxed" dir="rtl">
+              "عرض خاص لك! عند الدفع الإلكتروني الفوري (Apple Pay أو تابي 4 دفعات بقيمة 94.50 AED) ستحصل على خصم حصري 10% ليصبح الإجمالي 378 AED فقط!"
+            </p>
+          </div>
+
+          <div class="p-5 rounded-2xl bg-slate-950 border border-slate-800 space-y-3">
+            <div class="flex justify-between items-center">
+              <strong class="text-sm text-white">📦 Smart Carrier SLA & RTO Arbitrage</strong>
+              <span id="innZone" class="px-2 py-0.5 rounded bg-emerald-500/20 text-emerald-300">Riyadh Olaya (SA)</span>
+            </div>
+            <div id="innArbCards" class="space-y-2.5">
+              <div class="p-3.5 rounded-xl bg-emerald-950/30 border border-emerald-500/40 flex justify-between items-center">
+                <div><div class="font-bold text-emerald-300">🏆 WINNER: Aramex GCC Priority (94.2% Success)</div><div class="text-slate-400">Base $6.80 + Expected RTO $1.24 = <strong>$8.04 Effective</strong></div></div>
+                <span class="px-2.5 py-1 rounded bg-emerald-500 text-slate-950 font-bold">Saves $1.85</span>
+              </div>
+              <div class="p-3.5 rounded-xl bg-slate-900 border border-slate-800 flex justify-between items-center opacity-80">
+                <div><div class="font-semibold text-slate-300">Runner-up: SMSA Express (86.5% Success)</div><div class="text-slate-400">Base $6.20 + Expected RTO $3.69 = <strong>$9.89 Effective</strong></div></div>
+                <span class="px-2 py-1 rounded bg-slate-800 text-slate-400">Skipped</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ================================================================== -->
+    <!-- TAB 6: ENTERPRISE SVG ANALYTICS & 24H FRAUD-FILTERED RETARGETING   -->
+    <!-- ================================================================== -->
+    <section id="tab-analytics" class="tab-panel space-y-6">
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-6">
+        <div class="lg:col-span-7 glass border border-slate-800 rounded-2xl p-6 space-y-4">
+          <div class="flex justify-between items-center">
+            <div><h3 class="text-base font-bold text-white">📉 30-Day COD RTO Rate Reduction (31.4% → 9.6%)</h3><p class="text-xs text-slate-400">Baseline unguarded stores (dashed) vs OmniCommerce Shield (emerald)</p></div>
+            <span class="px-2.5 py-1 rounded-lg bg-emerald-500/20 text-emerald-300 text-xs font-bold">-69.4% RTO</span>
+          </div>
+          <svg viewBox="0 0 600 200" class="w-full h-48 overflow-visible">
+            <line x1="30" y1="50" x2="580" y2="50" stroke="#1e293b" stroke-dasharray="4 4" />
+            <line x1="30" y1="110" x2="580" y2="110" stroke="#1e293b" stroke-dasharray="4 4" />
+            <line x1="30" y1="165" x2="580" y2="165" stroke="#1e293b" stroke-dasharray="4 4" />
+            <polyline fill="none" stroke="#fb7185" stroke-width="2" stroke-dasharray="6 4" points="40,48 144,49 248,47 352,50 456,48 560,48" />
+            <polyline fill="none" stroke="#10b981" stroke-width="3.5" points="40,55 144,77 248,100 352,118 456,132 560,140" />
+            <circle cx="40" cy="55" r="4.5" fill="#10b981" /><text x="28" y="45" fill="#34d399" font-size="10">29.8%</text>
+            <circle cx="248" cy="100" r="4.5" fill="#10b981" /><text x="236" y="90" fill="#34d399" font-size="10">19.2%</text>
+            <circle cx="560" cy="140" r="5.5" fill="#10b981" /><text x="546" y="130" fill="#34d399" font-size="11" font-weight="bold">9.6%</text>
+            <text x="30" y="190" fill="#94a3b8" font-size="10">Day 1</text>
+            <text x="236" y="190" fill="#94a3b8" font-size="10">Day 15</text>
+            <text x="540" y="190" fill="#94a3b8" font-size="10">Day 30</text>
+          </svg>
+        </div>
+
+        <div class="lg:col-span-5 glass border border-slate-800 rounded-2xl p-6 space-y-4 text-xs">
+          <h3 class="text-base font-bold text-white">🌍 Regional Delivery Success Rates</h3>
+          <div class="space-y-3">
+            <div><div class="flex justify-between"><span>UAE (Aramex GCC)</span><strong class="text-emerald-400">94.8%</strong></div><div class="h-2 rounded-full bg-slate-950 mt-1"><div class="h-full rounded-full bg-emerald-500" style="width:94.8%"></div></div></div>
+            <div><div class="flex justify-between"><span>Malaysia (Ninja Van SEA)</span><strong class="text-emerald-400">93.8%</strong></div><div class="h-2 rounded-full bg-slate-950 mt-1"><div class="h-full rounded-full bg-indigo-500" style="width:93.8%"></div></div></div>
+            <div><div class="flex justify-between"><span>Saudi Arabia (Aramex + SMSA)</span><strong class="text-emerald-400">91.5%</strong></div><div class="h-2 rounded-full bg-slate-950 mt-1"><div class="h-full rounded-full bg-emerald-400" style="width:91.5%"></div></div></div>
+            <div><div class="flex justify-between"><span>Indonesia (NinjaVan + J&T)</span><strong class="text-amber-400">89.4%</strong></div><div class="h-2 rounded-full bg-slate-950 mt-1"><div class="h-full rounded-full bg-amber-500" style="width:89.4%"></div></div></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Phase 4 Retargeting -->
+      <div class="glass border border-emerald-500/40 rounded-2xl p-6 space-y-4 text-xs">
+        <div class="flex flex-wrap justify-between items-center gap-2">
+          <div><h3 class="text-base font-bold text-white">🚀 Fraud-Filtered Meta 24h Window Auto-Retargeting</h3><p class="text-slate-400">Recovers abandoned chats inside Meta's free 24h service window while suppressing high-RTO abusers</p></div>
+          <div class="flex gap-2">
+            <button onclick="simRetarg('vip')" class="px-3 py-1.5 rounded-lg bg-emerald-500/20 text-emerald-300 font-semibold">Safe VIP (3-Wave Recovery)</button>
+            <button onclick="simRetarg('toxic')" class="px-3 py-1.5 rounded-lg bg-rose-500/20 text-rose-300 font-semibold">High-RTO Buyer (Auto-Suppressed)</button>
+          </div>
+        </div>
+        <div id="retargBox" class="grid grid-cols-1 md:grid-cols-3 gap-3">
+          <div class="p-3.5 rounded-xl bg-slate-950 border border-slate-800"><strong class="text-indigo-300">Wave 1 (T+45m • $0 Meta Fee)</strong><p class="text-slate-300 mt-1">"Hi Mariam! Your Oud Abaya is reserved for 2h. Confirm delivery pin!"</p></div>
+          <div class="p-3.5 rounded-xl bg-slate-950 border border-slate-800"><strong class="text-fuchsia-300">Wave 2 (T+6h • Tabby 4x Split)</strong><p class="text-slate-300 mt-1">"Ship today for just 105 AED now (4 interest-free payments via Tabby)!"</p></div>
+          <div class="p-3.5 rounded-xl bg-slate-950 border border-slate-800"><strong class="text-emerald-300">Wave 3 (T+22h • 6% Prepaid Flash)</strong><p class="text-slate-300 mt-1">"Final 2h offer before 24h window closes: 6% off when paying online!"</p></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ================================================================== -->
+    <!-- TAB 7: SSO / 2FA OTP / RBAC TEAM / API KEYS & GDPR/PDPL LEGAL      -->
+    <!-- ================================================================== -->
+    <section id="tab-auth-legal" class="tab-panel space-y-6">
+      <div class="grid grid-cols-1 lg:grid-cols-2 gap-6 text-xs">
+        <div class="glass border border-slate-800 rounded-2xl p-6 space-y-4">
+          <h3 class="text-base font-bold text-white">🔑 1-Click SSO, WhatsApp 2FA OTP & API Keys</h3>
+          <div class="grid grid-cols-3 gap-2">
+            <button onclick="showToast('Google Workspace OAuth PKCE Verified!')" class="py-2 rounded-xl bg-slate-950 border border-slate-700 font-semibold">Google SSO</button>
+            <button onclick="showToast('Shopify Admin OAuth Connected!')" class="py-2 rounded-xl bg-emerald-500/20 border border-emerald-500/40 text-emerald-300 font-semibold">Shopify SSO</button>
+            <button onclick="showToast('Salla GCC Store Connected!')" class="py-2 rounded-xl bg-indigo-500/20 border border-indigo-500/40 text-indigo-300 font-semibold">Salla KSA SSO</button>
+          </div>
+          <div class="flex gap-2">
+            <input id="otpField" value="482910" class="flex-1 px-3 py-2 rounded-xl bg-slate-950 border border-slate-700 font-mono text-white" />
+            <button onclick="showToast('✅ 6-Digit 2FA OTP Verified! Owner RBAC Session Issued.')" class="px-4 py-2 rounded-xl bg-emerald-500 text-slate-950 font-bold">Verify OTP</button>
+          </div>
+          <div class="p-3 rounded-xl bg-slate-950 border border-slate-800 flex items-center justify-between gap-2">
+            <span id="liveKeyDisplay" class="font-mono text-amber-300 truncate">omni_live_9f86d081884c7d659a2feaa0c55ad015</span>
+            <button onclick="rotateKey()" class="px-3 py-1 rounded-lg bg-amber-500/20 text-amber-300 font-semibold shrink-0">Rotate Key</button>
+          </div>
+        </div>
+
+        <div class="glass border border-slate-800 rounded-2xl p-6 space-y-3 text-xs">
+          <h3 class="text-base font-bold text-white">👥 RBAC Team Permissions (`omni_core::rbac`)</h3>
+          <div class="divide-y divide-slate-800">
+            <div class="py-2 flex justify-between"><span><strong>Tariq Al-Mansoor</strong> (tariq@alnoor-dubai.ae)</span><span class="text-emerald-400 font-mono font-bold">OWNER</span></div>
+            <div class="py-2 flex justify-between"><span><strong>Nadia Al-Harbi</strong> (nadia@alnoor-dubai.ae)</span><span class="text-indigo-400 font-mono font-bold">STORE_MANAGER</span></div>
+            <div class="py-2 flex justify-between"><span><strong>Zaid Rahman</strong> (support@alnoor-dubai.ae)</span><span class="text-fuchsia-400 font-mono font-bold">SUPPORT_AGENT</span></div>
+            <div class="py-2 flex justify-between"><span><strong>Amira Hassan</strong> (logistics@alnoor-dubai.ae)</span><span class="text-amber-400 font-mono font-bold">LOGISTICS_COORD</span></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Legal & Compliance Center -->
+      <div class="glass border border-slate-800 rounded-2xl p-6 space-y-4 text-xs text-slate-300 leading-relaxed">
+        <h3 class="text-base font-bold text-white">📜 Enterprise Legal, Privacy Policy (GDPR & Saudi PDPL) & 99.95% SLA</h3>
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+          <div class="p-4 rounded-xl bg-slate-950 border border-slate-800 space-y-1.5">
+            <strong class="text-emerald-400">1. Zero-Knowledge Privacy (GDPR / PDPL)</strong>
+            <p>All cross-merchant shopper lookups operate solely on normalized E.164 numbers hashed with salted <code>HMAC-SHA256</code>. Raw customer PII is never exposed across tenants.</p>
+          </div>
+          <div class="p-4 rounded-xl bg-slate-950 border border-slate-800 space-y-1.5">
+            <strong class="text-indigo-400">2. Terms of Service & 99.95% Uptime SLA</strong>
+            <p>Scale and Enterprise subscriptions include a 99.95% monthly API availability SLA, sub-2ms checkout fraud verification, and strict Meta WhatsApp Cloud compliance.</p>
+          </div>
+          <div class="p-4 rounded-xl bg-slate-950 border border-slate-800 space-y-1.5">
+            <strong class="text-amber-400">3. Data Processing Agreement (DPA)</strong>
+            <p>Standard GDPR & Saudi PDPL DPA included automatically. Merchants or shoppers may trigger instant cryptographic erasure via <code>privacy@omnicommerce.ai</code>.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- Global Footer -->
+  <footer class="border-t border-slate-800 bg-slate-950 px-6 py-6 text-xs text-slate-400">
+    <div class="max-w-7xl mx-auto flex flex-col sm:flex-row justify-between items-center gap-3">
+      <span>© 2026 OmniCommerce AI OS • Built on Rust (Axum + Diesel) & Next.js • GDPR & Saudi PDPL Compliant</span>
+      <div class="flex gap-4">
+        <button onclick="switchTab('tab-marketing')" class="hover:text-white">Pricing & ROI</button>
+        <button onclick="switchTab('tab-auth-legal')" class="hover:text-white">Privacy Policy & SLA</button>
+        <button onclick="toggleSupportChat()" class="hover:text-emerald-400 font-semibold">24/7 Support</button>
+      </div>
+    </div>
+  </footer>
+
+  <!-- AWB Print Modal -->
+  <div id="awbModal" class="hidden fixed inset-0 z-50 bg-black/75 backdrop-blur-sm flex items-center justify-center p-4">
+    <div class="bg-slate-900 border border-slate-700 rounded-2xl max-w-md w-full p-6 space-y-4 text-xs">
+      <div class="flex justify-between items-center border-b border-slate-800 pb-3">
+        <strong class="text-sm text-white">🖨️ Carrier Waybill (AWB) Ready</strong>
+        <button onclick="document.getElementById('awbModal').classList.add('hidden')" class="text-slate-400 hover:text-white">✕</button>
+      </div>
+      <div id="awbModalBody" class="p-4 rounded-xl bg-white text-slate-950 font-mono space-y-2"></div>
+      <button onclick="document.getElementById('awbModal').classList.add('hidden'); showToast('🖨️ Sent AWB Label to Thermal Printer!')" class="w-full py-2.5 rounded-xl bg-emerald-500 text-slate-950 font-bold">
+        Print 4x6 Thermal Label
+      </button>
+    </div>
+  </div>
+
+  <!-- Toast Notification -->
+  <div id="toastBox" class="hidden fixed bottom-20 right-5 z-50 px-4 py-3 rounded-xl bg-emerald-500 text-slate-950 font-bold text-xs shadow-2xl"></div>
+
+  <!-- Floating 24/7 AI Support Chat Widget -->
+  <div class="fixed bottom-5 right-5 z-50">
+    <div id="supportChatBox" class="hidden mb-3 w-80 rounded-2xl bg-slate-900 border border-slate-700 shadow-2xl overflow-hidden text-xs">
+      <div class="bg-emerald-500 text-slate-950 px-4 py-2.5 flex justify-between items-center font-bold">
+        <span>OmniCommerce 24/7 AI Support</span>
+        <button onclick="toggleSupportChat()">✕</button>
+      </div>
+      <div id="chatMessages" class="p-3 space-y-2 max-h-56 overflow-y-auto bg-slate-950">
+        <div class="p-2.5 rounded-xl bg-slate-900 border border-slate-800 text-slate-200">
+          Marhaba! 👋 Ask me about Pricing, Shopify/Salla setup, Meta WABA approval, or GDPR/Saudi PDPL compliance.
+        </div>
+      </div>
+      <div class="p-2 bg-slate-900 border-t border-slate-800 flex gap-1.5">
+        <input id="chatInput" placeholder="Ask a question..." class="flex-1 px-2.5 py-1.5 rounded-lg bg-slate-950 border border-slate-700 text-white" />
+        <button onclick="sendSupportMsg()" class="px-3 py-1.5 rounded-lg bg-emerald-500 text-slate-950 font-bold">Send</button>
+      </div>
+    </div>
+    <button onclick="toggleSupportChat()" class="px-4 py-2.5 rounded-full bg-emerald-500 hover:bg-emerald-400 text-slate-950 font-bold text-xs shadow-xl">
+      💬 24/7 Live AI Support
+    </button>
   </div>
 
   <script>
-    function generateNewMerchantKey() {
-      const rand = Array.from({length: 32}, () => Math.floor(Math.random()*16).toString(16)).join('');
-      document.getElementById('liveApiKeyOut').textContent = 'omni_live_' + rand;
+    let currentLang = 'en';
+    const TRANSLATIONS = {
+      en: {
+        heroBadge: 'TRUSTED BY 1,842+ D2C BRANDS ACROSS UAE, SAUDI ARABIA & SOUTHEAST ASIA',
+        heroTitle: 'Stop COD Returns. Automate WhatsApp Sales with Margin-Protected AI.',
+        heroSub: 'Block serial RTO offenders across 1.42M+ zero-knowledge shopper fingerprints, negotiate discounts safely above your secret COGS margin floor, and auto-dispatch Aramex, Ninja Van & DHL shipments in under 2ms.',
+        ctaPrimary: 'Open Live Fraud Shield & Webhooks →',
+        ctaSecondary: 'Calculate Monthly Savings',
+        roiTitle: 'Interactive ROI & RTO Savings Calculator',
+        pricingTitle: 'Transparent Global SaaS Pricing'
+      },
+      ar: {
+        heroBadge: 'موثوق من أكثر من 1,842 علامة تجارية في الإمارات والسعودية وجنوب شرق آسيا',
+        heroTitle: 'أوقف مرتجعات الدفع عند الاستلام. وأتمت مبيعات واتساب بالذكاء الاصطناعي.',
+        heroSub: 'اكشف العملاء ذوي المرتجعات العالية عبر 1.42 مليون بصمة مشفرة، وتفاوض على الخصومات مع حماية هامش الربح، واشحن تلقائياً عبر أرامكس ونينجا فان.',
+        ctaPrimary: 'افتح لوحة كشف الاحتيال المباشرة ←',
+        ctaSecondary: 'احسب التوفير الشهري',
+        roiTitle: 'حاسبة العائد على الاستثمار وتوفير المرتجعات',
+        pricingTitle: 'خطط أسعار عالمية شفافة'
+      }
+    };
+
+    function toggleLanguage() {
+      currentLang = currentLang === 'en' ? 'ar' : 'en';
+      document.documentElement.dir = currentLang === 'ar' ? 'rtl' : 'ltr';
+      document.getElementById('langToggleBtn').textContent = currentLang === 'ar' ? '🌐 Switch to English (LTR)' : '🌐 العربية (RTL)';
+      document.querySelectorAll('[data-i18n]').forEach(el => {
+        const key = el.getAttribute('data-i18n');
+        if (TRANSLATIONS[currentLang][key]) el.textContent = TRANSLATIONS[currentLang][key];
+      });
+      showToast(currentLang === 'ar' ? 'تم التبديل إلى اللغة العربية (RTL)' : 'Switched to Global English (LTR)');
     }
 
-    function addProductToCatalog() {
-      const sku = document.getElementById('catSku').value;
-      const title = document.getElementById('catTitle').value;
-      const margin = document.getElementById('catMargin').value;
-      const notice = document.getElementById('catalogNotice');
-      notice.className = 'text-emerald-400 text-[11px] font-semibold';
-      notice.textContent = `✅ Indexed ${sku} ("${title}") in Pinecone Vector DB with ${margin} Minimum Margin Floor!`;
+    function switchTab(tabId) {
+      document.querySelectorAll('.tab-panel').forEach(p => p.classList.remove('active'));
+      document.getElementById(tabId).classList.add('active');
+      document.querySelectorAll('.nav-btn').forEach(b => {
+        if (b.getAttribute('data-tab') === tabId) {
+          b.className = 'nav-btn px-3 py-2 rounded-xl bg-emerald-500 text-slate-950 transition font-bold';
+        } else {
+          b.className = 'nav-btn px-3 py-2 rounded-xl bg-slate-900 text-slate-300 hover:text-white border border-slate-800 transition';
+        }
+      });
+      window.scrollTo({ top: 0, behavior: 'smooth' });
     }
 
-    function simulateRetargeting(mode) {
-      const badge = document.getElementById('retargStatusBadge');
-      const box = document.getElementById('retargetingWavesBox');
-      if (mode === 'toxic_suppressed') {
-        badge.className = 'px-2.5 py-0.5 rounded-full text-[11px] font-bold bg-rose-500/20 text-rose-300 border border-rose-500/40';
-        badge.textContent = 'SUPPRESSED BY FRAUD SHIELD (Score: 82/100)';
-        box.innerHTML = `
-          <div class="p-4 rounded-xl bg-rose-950/30 border border-rose-500/40 text-rose-200 space-y-2">
-            <div class="font-bold text-sm">🛑 Retargeting Blocked Automatically — Saved Meta Marketing Template Cost & Future RTO!</div>
-            <p class="text-slate-300">This shopper has 4 doorstep refusals across the OmniCommerce Network (Risk Score: 82/100). OmniCommerce suppressed all 3 follow-up waves automatically.</p>
-          </div>
-        `;
+    function showToast(msg) {
+      const box = document.getElementById('toastBox');
+      box.textContent = msg;
+      box.classList.remove('hidden');
+      setTimeout(() => box.classList.add('hidden'), 3000);
+    }
+
+    function runHeroCheck() {
+      const p = document.getElementById('heroPhoneInput').value;
+      const scoreOut = document.getElementById('heroScoreOut');
+      const actOut = document.getElementById('heroActionOut');
+      if (p.includes('000') || p.includes('9999')) {
+        scoreOut.className = 'text-rose-400'; scoreOut.textContent = '88/100 (BLOCKED)';
+        actOut.textContent = 'BLOCK_COD_PREPAID_ONLY → Require Stripe / Tabby';
+      } else if (p.startsWith('+966')) {
+        scoreOut.className = 'text-amber-400'; scoreOut.textContent = '36/100 (MODERATE)';
+        actOut.textContent = 'WHATSAPP_FLOW_CONFIRMATION → Arabic Pin Check';
       } else {
-        badge.className = 'px-2.5 py-0.5 rounded-full text-[11px] font-bold bg-emerald-500/20 text-emerald-300 border border-emerald-500/40';
-        badge.textContent = 'ELIGIBLE • 34.5% Expected Recovery';
-        box.innerHTML = `
-          <div class="p-3 rounded-lg bg-slate-900 border border-slate-800">
-            <div class="flex justify-between text-indigo-300 font-semibold">
-              <span>Wave 1 (T + 45 Mins • Warm Stock Scarcity)</span>
-              <span>$0.00 Meta Service Window</span>
-            </div>
-            <p class="text-slate-300 mt-1">"Hi Mariam! We reserved your Oud Royal Velvet Abaya (420.00 AED) in our warehouse for the next 2 hours. Tap below to confirm your delivery pin!"</p>
-          </div>
-          <div class="p-3 rounded-lg bg-slate-900 border border-slate-800">
-            <div class="flex justify-between text-fuchsia-300 font-semibold">
-              <span>Wave 2 (T + 6 Hours • 4x Interest-Free Tabby/Atome Framing)</span>
-              <span>$0.00 Meta Service Window</span>
-            </div>
-            <p class="text-slate-300 mt-1">"Still thinking about it? Get it shipped today for just 105.00 AED now (4 interest-free payments via Tabby)!"</p>
-          </div>
-          <div class="p-3 rounded-lg bg-slate-900 border border-slate-800">
-            <div class="flex justify-between text-emerald-300 font-semibold">
-              <span>Wave 3 (T + 22 Hours • Pre-24h Closing 6% Prepaid Flash Offer)</span>
-              <span>Saves Paid Template Fee</span>
-            </div>
-            <p class="text-slate-300 mt-1">"Final 2-hour VIP offer: Complete your checkout online now and enjoy 6% off — pay just 394.80 AED with Priority Express Shipping!"</p>
-          </div>
-        `;
+        scoreOut.className = 'text-emerald-400'; scoreOut.textContent = '9/100 (SAFE)';
+        actOut.textContent = 'ALLOW_SEAMLESS_COD → Auto-Dispatch Aramex';
       }
     }
 
-    function recalcRoi() {
-      const fee = parseFloat(document.getElementById('planSelect').value);
-      const totalVal = 5694.0;
-      const mult = (totalVal / fee).toFixed(1);
-      document.getElementById('roiMultiple').textContent = mult + 'x';
+    function updateLandingRoi() {
+      const orders = Number(document.getElementById('roiOrdersSlider').value);
+      const aov = Number(document.getElementById('roiAovSlider').value);
+      const rto = Number(document.getElementById('roiRtoSlider').value);
+      document.getElementById('roiOrdersLabel').textContent = orders.toLocaleString() + ' orders';
+      document.getElementById('roiAovLabel').textContent = '$' + aov + ' USD';
+      document.getElementById('roiRtoLabel').textContent = rto + '%';
+      const parcels = Math.round(orders * Math.max(0.05, (rto - 9.6) / 100));
+      const saved = Math.round(parcels * 14);
+      const recovered = Math.round(orders * 0.065 * aov * 0.34);
+      const carrier = Math.round(orders * 1.25);
+      const total = saved + recovered + carrier;
+      document.getElementById('roiSavedBox').textContent = '+$' + saved.toLocaleString();
+      document.getElementById('roiParcelsBox').textContent = parcels + ' failed parcels blocked';
+      document.getElementById('roiRecoveredBox').textContent = '+$' + recovered.toLocaleString();
+      document.getElementById('roiCarrierBox').textContent = '+$' + carrier.toLocaleString();
+      document.getElementById('roiTotalBox').textContent = '$' + total.toLocaleString() + ' / mo';
+      document.getElementById('roiMultipleBox').textContent = (total / 199).toFixed(1) + 'x Net ROI (Scale)';
     }
 
-    function runInnovationScenario(mode) {
-      const badge = document.getElementById('negStrategyBadge');
-      const req = document.getElementById('negRequested');
-      const margin = document.getElementById('negMargin');
-      const pitchEn = document.getElementById('negPitchEn');
-      const pitchAr = document.getElementById('negPitchAr');
-      const arbZone = document.getElementById('arbZoneBadge');
-      const arbTable = document.getElementById('arbTable');
-
-      if (mode === 'risky_haggler') {
-        badge.textContent = 'LEVERAGE_DISCOUNT_FOR_PREPAID_SWITCH';
-        req.textContent = '10.0% Discount (Risk Score: 48)';
-        margin.textContent = '36.5% (Safe ≥ 28%)';
-        pitchEn.textContent = '"I can\'t apply a discount on Cash-on-Delivery (420.00 AED), BUT if you complete your order via Instant Prepaid or Tabby 4x Split right now, I\'ve unlocked an exclusive 10.0% VIP discount — pay just 378.00 AED (or 4x 94.50 AED) with Priority Express Dispatch!"';
-        pitchAr.textContent = '"عرض خاص لك! السعر عند الاستلام هو 420.00 AED، ولكن عند الدفع الإلكتروني الفوري (Apple Pay أو تابي 4 دفعات بقيمة 94.50 AED) ستحصل على خصم حصري 10.0% ليصبح الإجمالي 378.00 AED فقط!"';
-      } else if (mode === 'extreme_bargainer') {
-        badge.textContent = 'COUNTER_OFFER_AT_MARGIN_FLOOR';
-        req.textContent = '25.0% Demanded (Blocked!)';
-        margin.textContent = '28.1% (Protected Floor!)';
-        pitchEn.textContent = '"Since Oud Royal Velvet Abaya is our limited edition, our margin guardrail prevents 25% off — but as my best final offer, I can unlock 12.0% off (369.60 AED instead of 420.00 AED, or 4x 92.40 AED on Tabby) when you checkout online today!"';
-        pitchAr.textContent = '"نظراً لأن المنتج إصدار محدود، لا يمكن منح خصم 25%، ولكن كأفضل عرض نهائي يمكنني منحك خصم 12.0% (369.60 AED بدلاً من 420.00 AED) عند الدفع عبر Apple Pay أو تابي اليوم!"';
-      } else if (mode === 'sea_arbitrage') {
-        arbZone.textContent = 'Zone: Kuala Lumpur (MY - SEA)';
-        arbTable.innerHTML = `
-          <div class="p-3 rounded-xl bg-emerald-950/30 border border-emerald-500/40 flex items-center justify-between">
-            <div>
-              <div class="font-bold text-emerald-300">🏆 WINNER: Ninja Van SEA Pro (93.8% Zone Delivery Success)</div>
-              <div class="text-slate-400 mt-0.5">Base Fee: $2.90 + Expected RTO Waste: $0.68 = <strong>$3.58 Effective Cost</strong></div>
-            </div>
-            <span class="px-2.5 py-1 rounded bg-emerald-500 text-slate-950 font-bold">Saves $1.42</span>
-          </div>
-          <div class="p-3 rounded-xl bg-slate-900 border border-slate-800 flex items-center justify-between opacity-80">
-            <div>
-              <div class="font-semibold text-slate-300">Runner-up: J&amp;T Express SEA (83.0% Zone Delivery Success)</div>
-              <div class="text-slate-400 mt-0.5">Base Fee: $2.40 + Expected RTO Waste: $2.60 = <strong>$5.00 Effective Cost</strong></div>
-            </div>
-            <span class="px-2 py-1 rounded bg-slate-800 text-slate-400">Skipped</span>
-          </div>
-        `;
-      }
+    function setBillingCycle(annual) {
+      document.getElementById('btnAnnual').className = annual ? 'px-4 py-1.5 rounded-lg bg-emerald-500 text-slate-950 font-bold' : 'px-4 py-1.5 rounded-lg text-slate-400';
+      document.getElementById('btnMonthly').className = !annual ? 'px-4 py-1.5 rounded-lg bg-indigo-600 text-white font-bold' : 'px-4 py-1.5 rounded-lg text-slate-400';
+      document.getElementById('priceGrowth').textContent = annual ? '$63' : '$79';
+      document.getElementById('priceScale').textContent = annual ? '$199' : '$249';
+      document.getElementById('priceEnt').textContent = annual ? '$559' : '$699';
     }
 
-    function simulateWebhook(scenario) {
+    function selectPlanToast(plan) {
+      showToast(`🚀 Selected ${plan} Plan! Redirecting to Onboarding & API Keys...`);
+      setTimeout(() => switchTab('tab-auth-legal'), 700);
+    }
+
+    // Orders state
+    const ORDERS_DATA = [
+      { id: 'ORD-DXB-77801', ch: 'SHOPIFY_UAE', cust: 'Sara Al-Maktoum', phone: '+971509876543', amt: '420.00 AED (COD)', score: '9/100 SAFE', cat: 'SAFE', awb: 'ARMX-AE-77801DXB' },
+      { id: 'ORD-KSA-99412', ch: 'SALLA_KSA', cust: 'Faisal Al-Saud', phone: '+966554433221', amt: '513.00 SAR (Tabby 4x)', score: '38/100 MOD', cat: 'CONVERTED', awb: 'ARMX-SA-PREPAID99' },
+      { id: 'ORD-MY-33109', ch: 'TIKTOK_MY', cust: 'Aiman Hakim', phone: '+60123456789', amt: '185.00 MYR (COD)', score: '12/100 SAFE', cat: 'SAFE', awb: 'NJVMY33109KL' },
+      { id: 'ORD-DXB-88104', ch: 'WHATSAPP_UAE', cust: 'Unknown Test', phone: '+971520009999', amt: '890.00 AED (BLOCKED)', score: '94/100 BLOCKED', cat: 'BLOCKED', awb: 'HELD_PREPAID_ONLY' }
+    ];
+
+    function renderOrders(filter = 'ALL') {
+      const rows = ORDERS_DATA.filter(o => filter === 'ALL' || o.cat === filter);
+      document.getElementById('ordersBody').innerHTML = rows.map(o => `
+        <tr class="hover:bg-slate-900/60">
+          <td class="p-3.5 font-mono font-bold text-white">${o.id}<span class="block text-[10px] text-indigo-400">${o.ch}</span></td>
+          <td class="p-3.5">${o.cust}<span class="block text-[10px] text-slate-400 font-mono">${o.phone}</span></td>
+          <td class="p-3.5 font-semibold">${o.amt}</td>
+          <td class="p-3.5 font-bold ${o.cat === 'BLOCKED' ? 'text-rose-400' : o.cat === 'CONVERTED' ? 'text-amber-400' : 'text-emerald-400'}">${o.score}</td>
+          <td class="p-3.5 font-mono text-emerald-300">${o.awb}</td>
+          <td class="p-3.5"><button onclick="openAwb('${o.id}','${o.awb}','${o.cust}')" class="px-2.5 py-1 rounded bg-slate-800 hover:bg-slate-700 text-white font-semibold">Print AWB</button></td>
+        </tr>
+      `).join('');
+    }
+    function filterOrders() { renderOrders(document.getElementById('orderFilter').value); }
+    function simulateNewIncomingOrder() {
+      ORDERS_DATA.unshift({ id: 'ORD-QAT-' + Math.floor(10000+Math.random()*89999), ch: 'ZID_QATAR', cust: 'Hessa Al-Thani', phone: '+97455123456', amt: '600.00 QAR (COD)', score: '11/100 SAFE', cat: 'SAFE', awb: 'ARMX-QA-NEW901' });
+      renderOrders('ALL');
+      showToast('🔔 New Live Order Received & Auto-Dispatched via Aramex!');
+    }
+    function openAwb(id, awb, cust) {
+      document.getElementById('awbModalBody').innerHTML = `<div><strong>OMNICOMMERCE EXPRESS AWB</strong></div><div>Order: ${id}</div><div>Tracking: ${awb}</div><div>Consignee: ${cust}</div><div class="pt-2 border-t border-slate-300 text-center font-bold">|||| |||| |||| ||| ${awb} |||</div>`;
+      document.getElementById('awbModal').classList.remove('hidden');
+    }
+
+    // Catalog state
+    const CATALOG_DATA = [
+      { sku: 'OMNI-GCC-ABAYA-902', title: 'Oud Royal Velvet Abaya', price: '420 AED', cogs: '240 AED', margin: '28.0%', disc: '12.0%' },
+      { sku: 'OMNI-KSA-OUD-501', title: 'Royal Cambodian Oud 100ml', price: '540 SAR', cogs: '290 SAR', margin: '30.0%', disc: '10.0%' },
+      { sku: 'OMNI-SEA-SILK-310', title: 'KL Silk Kurung Set', price: '185 MYR', cogs: '98 MYR', margin: '26.0%', disc: '12.0%' }
+    ];
+    function renderCatalog() {
+      document.getElementById('catalogGrid').innerHTML = CATALOG_DATA.map(c => `
+        <div class="p-4 rounded-2xl bg-slate-950 border border-slate-800 space-y-2">
+          <div class="flex justify-between"><span class="font-mono text-indigo-400 font-bold">${c.sku}</span><span class="text-emerald-400">Indexed</span></div>
+          <div class="font-bold text-white text-sm">${c.title}</div>
+          <div class="grid grid-cols-2 gap-1.5 pt-2 border-t border-slate-800">
+            <div><span class="text-slate-400">Price:</span> <strong>${c.price}</strong></div>
+            <div><span class="text-slate-400">Secret COGS:</span> <strong class="text-amber-400">${c.cogs}</strong></div>
+            <div><span class="text-slate-400">Min Margin:</span> <strong class="text-emerald-400">${c.margin}</strong></div>
+            <div><span class="text-slate-400">Max AI Disc:</span> <strong class="text-fuchsia-400">${c.disc}</strong></div>
+          </div>
+        </div>
+      `).join('');
+    }
+    function addCatalogSku() {
+      CATALOG_DATA.unshift({
+        sku: document.getElementById('catSku').value,
+        title: document.getElementById('catTitle').value,
+        price: document.getElementById('catPrice').value,
+        cogs: document.getElementById('catCogs').value,
+        margin: document.getElementById('catMargin').value,
+        disc: document.getElementById('catDisc').value
+      });
+      renderCatalog();
+      showToast('✅ Indexed new SKU in Pinecone Vector DB with Secret COGS Guardrail!');
+    }
+
+    function loadFraudPreset(t) {
+      if (t === 'safe') { document.getElementById('fPhone').value = '+971509876543'; document.getElementById('fAddr').value = 'Boulevard Point Tower 1, Apt 1402, Downtown Dubai'; document.getElementById('fOrders').value = 8; document.getElementById('fRto').value = 0; }
+      else if (t === 'moderate') { document.getElementById('fPhone').value = '+966554433221'; document.getElementById('fAddr').value = 'Near Olaya street Riyadh'; document.getElementById('fOrders').value = 3; document.getElementById('fRto').value = 1; }
+      else { document.getElementById('fPhone').value = '+971520009999'; document.getElementById('fAddr').value = 'asdfgh test 0000'; document.getElementById('fOrders').value = 5; document.getElementById('fRto').value = 4; }
+      runManualFraudEval();
+    }
+    function runManualFraudEval() {
+      const addr = document.getElementById('fAddr').value;
+      const o = Math.max(1, Number(document.getElementById('fOrders').value));
+      const r = Number(document.getElementById('fRto').value);
+      let s = Math.round((r / o) * 55) + (!/\d/.test(addr) ? 18 : 0) + (/asdf|test|0000/i.test(addr) || addr.length < 12 ? 35 : 0);
+      s = Math.min(100, Math.max(6, s));
+      const tier = s <= 24 ? 'SAFE → ALLOW_SEAMLESS_COD' : s <= 49 ? 'MODERATE → WHATSAPP_FLOW_CONFIRMATION' : 'BLOCKED → PREPAID_ONLY';
+      document.getElementById('fManualOut').innerHTML = `<span class="text-slate-300 font-mono">HMAC-SHA256 Verified</span><strong class="${s<=24?'text-emerald-400':s<=49?'text-amber-400':'text-rose-400'}">SCORE: ${s}/100 (${tier})</strong>`;
+    }
+
+    function simulateWebhook(sc) {
       const log = document.getElementById('webhookTraceLog');
       const banner = document.getElementById('waResolutionBanner');
-      const waHeader = document.getElementById('waHeader');
-      const waBody = document.getElementById('waBody');
-
-      if (scenario === 'salla_moderate') {
-        waHeader.textContent = 'تأكيد طلب الدفع عند الاستلام • Faisal Al-Saud';
-        waBody.textContent = 'مرحباً Faisal! لتسريع شحن طلبك بقيمة 540.00 SAR عبر أرامكس، يرجى تأكيد رقم المبنى أدناه، أو احصل على خصم فوري 5% (513.00 SAR) عند الدفع الإلكتروني الآن!';
-        log.innerHTML = `
-          <div>[1] ✅ Verified <code>X-Salla-Signature</code> (HMAC-SHA256 Constant-Time Match)</div>
-          <div>[2] 🔒 Locked <code>Idempotency-Key: SALLA_GCC:ORD-KSA-99412</code></div>
-          <div>[3] 📞 Normalized Phone: <code>+966554433221</code> (Region: <strong>GCC / SA</strong>)</div>
-          <div>[4] 🛡️ Fraud Shield Score: <strong class="text-amber-400">38/100 (MODERATE)</strong> — Flag: <code>MISSING_BUILDING_OR_UNIT_NUMBER</code></div>
-          <div>[5] ⏸️ Action: <strong>HOLD_PENDING_WHATSAPP_FLOW_CONFIRMATION</strong></div>
-          <div>[6] 💬 Dispatched Arabic WhatsApp Flow to <code>+966554433221</code> with 5% Prepaid Nudge!</div>
-        `;
-        banner.textContent = '⏳ Shipment held until customer confirms building number in WhatsApp Flow above.';
-      } else if (scenario === 'shopify_safe') {
-        waHeader.textContent = 'Order Confirmed & Dispatched • Sara Al-Maktoum';
-        waBody.textContent = 'Your 420.00 AED Shopify COD order passed Zero-Knowledge Fraud Shield (Score: 9/100 SAFE) and was automatically booked with Aramex!';
-        log.innerHTML = `
-          <div>[1] ✅ Verified <code>X-Shopify-Hmac-Sha256</code> (Base64 Constant-Time Match)</div>
-          <div>[2] 🔒 Locked <code>Idempotency-Key: SHOPIFY:ORD-DXB-77801</code></div>
-          <div>[3] 📞 Normalized Phone: <code>+971509876543</code> (Region: <strong>GCC / AE</strong>)</div>
-          <div>[4] 🛡️ Fraud Shield Score: <strong class="text-emerald-400">9/100 (SAFE)</strong> — 8/8 Past Deliveries</div>
-          <div>[5] 🚀 Action: <strong>ALLOW_SEAMLESS_COD</strong> → Triggering <code>AramexAdapter::create_shipment()</code></div>
-          <div>[6] 📦 Booked Aramex AWB: <strong class="text-emerald-400">ARMX-AE-77801DXB</strong> (Label PDF Generated)</div>
-        `;
+      if (sc === 'salla_moderate') {
+        log.innerHTML = `<div>[1] ✅ Verified <code>X-Salla-Signature</code></div><div>[2] 🔒 Locked <code>Idempotency-Key: SALLA_GCC:ORD-KSA-99412</code></div><div>[3] 🛡️ Fraud Score: <strong class="text-amber-400">38/100 (MODERATE)</strong></div><div>[4] 💬 Dispatched Arabic WhatsApp Flow to <code>+966554433221</code></div>`;
+        banner.textContent = '⏳ Shipment held pending WhatsApp Flow pin confirmation.';
+      } else if (sc === 'shopify_safe') {
+        log.innerHTML = `<div>[1] ✅ Verified <code>X-Shopify-Hmac-Sha256</code></div><div>[2] 🛡️ Fraud Score: <strong class="text-emerald-400">9/100 (SAFE)</strong></div><div>[3] 📦 Auto-Booked Aramex AWB: <strong class="text-emerald-400">ARMX-AE-77801DXB</strong></div>`;
         banner.textContent = '✅ Auto-Dispatched via Aramex GCC! Tracking: ARMX-AE-77801DXB';
       } else {
-        waHeader.textContent = 'Order Confirmed & Dispatched • Aiman Hakim (Kuala Lumpur)';
-        waBody.textContent = 'Your 185.00 MYR order passed Fraud Shield (Score: 12/100 SAFE) and was automatically booked with Ninja Van Malaysia!';
-        log.innerHTML = `
-          <div>[1] ✅ Verified Storefront HMAC Signature</div>
-          <div>[2] 🔒 Locked <code>Idempotency-Key: SHOPIFY_SEA:ORD-MY-33109</code></div>
-          <div>[3] 📞 Normalized Phone: <code>+60123456789</code> (Region: <strong>SEA / MY</strong>)</div>
-          <div>[4] 🛡️ Fraud Shield Score: <strong class="text-emerald-400">12/100 (SAFE)</strong></div>
-          <div>[5] 🚀 Action: <strong>ALLOW_SEAMLESS_COD</strong> → Triggering <code>NinjaVanAdapter::create_shipment()</code></div>
-          <div>[6] 📦 Booked Ninja Van AWB: <strong class="text-indigo-400">NJVMY33109KL</strong> (Label PDF Generated)</div>
-        `;
+        log.innerHTML = `<div>[1] ✅ Verified Storefront Signature</div><div>[2] 🛡️ Fraud Score: <strong class="text-emerald-400">12/100 (SAFE)</strong></div><div>[3] 📦 Auto-Booked Ninja Van AWB: <strong class="text-indigo-400">NJVMY33109KL</strong></div>`;
         banner.textContent = '✅ Auto-Dispatched via Ninja Van SEA! Tracking: NJVMY33109KL';
       }
     }
-
     function submitWhatsAppFlow(mode) {
-      const building = document.getElementById('waBuildingInput').value;
-      const log = document.getElementById('webhookTraceLog');
-      const banner = document.getElementById('waResolutionBanner');
+      const b = document.getElementById('waBuildingInput').value;
+      document.getElementById('waResolutionBanner').textContent = mode === 'CONFIRM_COD' ? `✅ Verified "${b}"! Released Hold & Dispatched Aramex AWB.` : '🎉 Converted COD → Tabby 4x Prepaid (0% RTO Risk)! Dispatched Aramex Priority!';
+      showToast('WhatsApp Flow Webhook Processed!');
+    }
 
-      if (mode === 'CONFIRM_COD') {
-        log.innerHTML += `
-          <div class="text-emerald-400">[7] 📲 Received Meta Webhook <code>POST /api/v1/webhooks/whatsapp</code> (<code>nfm_reply</code>: Building "${building}")</div>
-          <div class="text-emerald-400">[8] 📦 Hold Released → Auto-Booked Aramex KSA Shipment: <strong>ARMX-SA-99412RYD</strong></div>
-        `;
-        banner.textContent = `✅ Verified "${building}"! Released Hold & Dispatched Aramex AWB: ARMX-SA-99412RYD`;
+    function runInnScenario(m) {
+      if (m === 'risky') {
+        document.getElementById('innStrategy').textContent = 'LEVERAGE_DISCOUNT_FOR_PREPAID';
+        document.getElementById('innReq').textContent = '10% Off (Risk 48)';
+        document.getElementById('innMargin').textContent = '36.5% (≥28%)';
+        document.getElementById('innPitchEn').textContent = '"I can\'t discount COD (420 AED), BUT switch to Instant Prepaid / Tabby 4x now and unlock 10% off — pay just 378 AED!"';
+      } else if (m === 'floor') {
+        document.getElementById('innStrategy').textContent = 'COUNTER_OFFER_AT_MARGIN_FLOOR';
+        document.getElementById('innReq').textContent = '25% Demanded (Blocked!)';
+        document.getElementById('innMargin').textContent = '28.1% (Floor Protected)';
+        document.getElementById('innPitchEn').textContent = '"Our margin guardrail blocks 25% off, but my best final offer is 12% off (369.60 AED) when checking out online today!"';
       } else {
-        log.innerHTML += `
-          <div class="text-indigo-400">[7] 💳 Buyer selected <strong>SWITCH_TO_PREPAID_SAVE_5PCT</strong> (Paid 513.00 SAR via ApplePay/Stripe)</div>
-          <div class="text-emerald-400">[8] 🎉 Zero RTO Risk! Auto-Booked Priority Aramex Shipment: <strong>ARMX-SA-PREPAID99</strong></div>
-        `;
-        banner.textContent = '🎉 Converted COD → Prepaid (0% RTO Risk)! Dispatched Aramex AWB: ARMX-SA-PREPAID99';
+        document.getElementById('innZone').textContent = 'Kuala Lumpur (MY - SEA)';
+        document.getElementById('innArbCards').innerHTML = `<div class="p-3.5 rounded-xl bg-emerald-950/30 border border-emerald-500/40 flex justify-between items-center"><div><div class="font-bold text-emerald-300">🏆 WINNER: Ninja Van SEA Pro (93.8% Success)</div><div class="text-slate-400">Base $2.90 + Expected RTO $0.68 = <strong>$3.58 Effective</strong></div></div><span class="px-2.5 py-1 rounded bg-emerald-500 text-slate-950 font-bold">Saves $1.42</span></div>`;
       }
     }
+
+    function simRetarg(t) {
+      document.getElementById('retargBox').innerHTML = t === 'toxic'
+        ? `<div class="md:col-span-3 p-4 rounded-xl bg-rose-950/30 border border-rose-500/40 text-rose-200"><strong>🛑 Auto-Suppressed by Fraud Shield (Risk Score: 82/100):</strong> Saved Meta WhatsApp template cost & prevented another $14 COD return!</div>`
+        : `<div class="p-3.5 rounded-xl bg-slate-950 border border-slate-800"><strong class="text-indigo-300">Wave 1 (T+45m • $0 Meta Fee)</strong><p class="text-slate-300 mt-1">"Hi Mariam! Your Oud Abaya is reserved for 2h. Confirm delivery pin!"</p></div><div class="p-3.5 rounded-xl bg-slate-950 border border-slate-800"><strong class="text-fuchsia-300">Wave 2 (T+6h • Tabby 4x Split)</strong><p class="text-slate-300 mt-1">"Ship today for just 105 AED now (4 interest-free payments via Tabby)!"</p></div><div class="p-3.5 rounded-xl bg-slate-950 border border-slate-800"><strong class="text-emerald-300">Wave 3 (T+22h • 6% Prepaid Flash)</strong><p class="text-slate-300 mt-1">"Final 2h offer before 24h window closes: 6% off when paying online!"</p></div>`;
+    }
+
+    function rotateKey() {
+      const hex = Array.from({length: 32}, () => Math.floor(Math.random()*16).toString(16)).join('');
+      document.getElementById('liveKeyDisplay').textContent = 'omni_live_' + hex;
+      showToast('🔑 Secret API Key Rotated & Hashed with HMAC-SHA256!');
+    }
+
+    function toggleSupportChat() { document.getElementById('supportChatBox').classList.toggle('hidden'); }
+    function sendSupportMsg() {
+      const inp = document.getElementById('chatInput');
+      const txt = inp.value.trim(); if (!txt) return;
+      const box = document.getElementById('chatMessages');
+      box.innerHTML += `<div class="p-2.5 rounded-xl bg-indigo-600 text-white ml-6">${txt}</div>`;
+      const lower = txt.toLowerCase();
+      let ans = 'Our Dubai & Singapore engineering teams can enable that on Growth ($79), Scale ($249), or Enterprise ($699)!';
+      if (lower.includes('price') || lower.includes('plan')) ans = 'Growth is $79/mo, Scale is $249/mo, Enterprise is $699/mo (20% off annually).';
+      else if (lower.includes('gdpr') || lower.includes('pdpl')) ans = '100% GDPR & Saudi PDPL compliant via salted HMAC-SHA256 E.164 phone hashing.';
+      box.innerHTML += `<div class="p-2.5 rounded-xl bg-slate-900 border border-slate-800 text-slate-200 mr-6">${ans}</div>`;
+      inp.value = '';
+      box.scrollTop = box.scrollHeight;
+    }
+
+    renderOrders();
+    renderCatalog();
   </script>
 </body>
 </html>

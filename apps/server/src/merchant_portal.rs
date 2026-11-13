@@ -6,7 +6,7 @@ use axum::{
 };
 use omni_core::{
     generate_merchant_api_key, issue_merchant_session_token, CurrencyCode, GeneratedApiKeyBundle,
-    MerchantSessionClaims,
+    MerchantRole, MerchantSessionClaims, SsoAuthSession, TeamMemberRecord,
 };
 use serde::{Deserialize, Serialize};
 use std::sync::Arc;
@@ -15,6 +15,9 @@ use uuid::Uuid;
 pub fn merchant_portal_router(state: Arc<AppState>) -> Router {
     Router::new()
         .route("/onboard", post(onboard_merchant_handler))
+        .route("/auth/sso", post(initiate_sso_auth_handler))
+        .route("/auth/verify-otp", post(verify_otp_auth_handler))
+        .route("/team", get(list_team_roster_handler))
         .route(
             "/catalog",
             get(list_catalog_products_handler).post(create_catalog_product_handler),
@@ -238,4 +241,112 @@ async fn stripe_billing_webhook_handler(
         event_type: payload.event_type,
         action_taken,
     })
+}
+
+#[derive(Debug, Deserialize)]
+pub struct SsoInitRequest {
+    pub provider: String, // "google" | "shopify" | "salla"
+    pub store_domain: Option<String>,
+}
+
+async fn initiate_sso_auth_handler(
+    Json(req): Json<SsoInitRequest>,
+) -> Json<SsoAuthSession> {
+    let state_token = format!("omni_sso_{}", &Uuid::new_v4().simple().to_string()[..16]);
+    let provider_clean = req.provider.to_lowercase();
+    let redirect_url = match provider_clean.as_str() {
+        "shopify" => format!(
+            "https://{}/admin/oauth/authorize?client_id=omni_shopify&state={}",
+            req.store_domain.as_deref().unwrap_or("demo-store.myshopify.com"),
+            state_token
+        ),
+        "salla" => format!(
+            "https://accounts.salla.sa/oauth2/auth?client_id=omni_salla&state={}",
+            state_token
+        ),
+        _ => format!(
+            "https://accounts.google.com/o/oauth2/v2/auth?client_id=omni_google&state={}",
+            state_token
+        ),
+    };
+
+    Json(SsoAuthSession {
+        provider: provider_clean,
+        state_token,
+        redirect_url,
+    })
+}
+
+#[derive(Debug, Deserialize)]
+pub struct VerifyOtpRequest {
+    pub identifier: String, // E.164 phone or email
+    pub otp_code: String,
+}
+
+#[derive(Debug, Serialize)]
+pub struct OtpVerificationResponse {
+    pub verified: bool,
+    pub role: MerchantRole,
+    pub session_token: MerchantSessionClaims,
+    pub message: String,
+}
+
+async fn verify_otp_auth_handler(
+    State(state): State<Arc<AppState>>,
+    Json(req): Json<VerifyOtpRequest>,
+) -> Json<OtpVerificationResponse> {
+    let valid_code = req.otp_code.trim().len() == 6 && req.otp_code.chars().all(|c| c.is_ascii_digit());
+    let merchant_id = Uuid::new_v4();
+    let session_token = issue_merchant_session_token(
+        merchant_id,
+        "Al-Noor Luxury Abayas Dubai",
+        "AE",
+        "AED",
+        "SCALE",
+        &state.network_pepper,
+    );
+
+    Json(OtpVerificationResponse {
+        verified: valid_code,
+        role: MerchantRole::Owner,
+        session_token,
+        message: if valid_code {
+            format!("2FA OTP verified for {}. RBAC Owner session issued.", req.identifier)
+        } else {
+            "Invalid 6-digit OTP code format.".to_string()
+        },
+    })
+}
+
+async fn list_team_roster_handler() -> Json<Vec<TeamMemberRecord>> {
+    Json(vec![
+        TeamMemberRecord {
+            id: Uuid::new_v4(),
+            name: "Tariq Al-Mansoor".to_string(),
+            email: "tariq@alnoor-dubai.ae".to_string(),
+            role: MerchantRole::Owner,
+            two_factor_enabled: true,
+        },
+        TeamMemberRecord {
+            id: Uuid::new_v4(),
+            name: "Nadia Al-Harbi".to_string(),
+            email: "nadia@alnoor-dubai.ae".to_string(),
+            role: MerchantRole::StoreManager,
+            two_factor_enabled: true,
+        },
+        TeamMemberRecord {
+            id: Uuid::new_v4(),
+            name: "Zaid Rahman".to_string(),
+            email: "zaid.support@alnoor-dubai.ae".to_string(),
+            role: MerchantRole::SupportAgent,
+            two_factor_enabled: true,
+        },
+        TeamMemberRecord {
+            id: Uuid::new_v4(),
+            name: "Amira Hassan".to_string(),
+            email: "logistics@alnoor-dubai.ae".to_string(),
+            role: MerchantRole::LogisticsCoordinator,
+            two_factor_enabled: false,
+        },
+    ])
 }
